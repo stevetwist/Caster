@@ -284,10 +284,10 @@ class Navigation(MergeRule):
         Choice("button_dictionary_500", button_dictionary_500),
         Choice("combined_button_dictionary", combined_button_dictionary),
 
-        Choice("capitalization", {
+        Choice("capitalization", {            
             "yell": 1,
             "tie": 2,
-            "gerrish": 3,
+            "camel": 3,
             "sing": 4,
             "laws": 5,
             "say": 6,
@@ -296,9 +296,10 @@ class Navigation(MergeRule):
         }),
         Choice(
             "spacing", {
+                "ace": 0,
                 "gum": 1,
                 "gun": 1,
-                "spine": 2,
+                "kebab": 2,
                 "snake": 3,
                 "pebble": 4,
                 "incline": 5,
@@ -338,7 +339,7 @@ class Navigation(MergeRule):
         "nnavi3": 1,
         "textnv": "",
         "capitalization": 0,
-        "spacing": 0,
+        "spacing": -1,
         "mtn_mode": None,
         "mtn_dir": "right",
         "extreme": None,

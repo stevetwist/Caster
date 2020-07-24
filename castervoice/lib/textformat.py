@@ -11,16 +11,16 @@ class TextFormat():
     Commands for capitalization:
     1 yell - ALLCAPS
     2 tie - TitleCase
-    3 Gerrish - camelCase
+    3 camel - camelCase
     4 sing - Sentencecase
     5 laws (default) - alllower
     6 say - whatever speech engine provides
     7 cop - Whatever speech engine provides, initial letter capitalized
     8 slip - whatever speech engine provides, initial letter lowercase
     Commands for word spacing:
-    0 (default except Gerrish) - words with spaces
-    1 gum (default for Gerrish)  - wordstogether
-    2 spine - words-with-hyphens
+    0 ace (default except camel and tie) - words with spaces
+    1 gum (default for camel and tie)  - wordstogether
+    2 kebab - words-with-hyphens
     3 snake - words_with_underscores
     4 pebble - words.with.fullstops
     5 incline - words/with/slashes
@@ -63,11 +63,12 @@ class TextFormat():
 
     @classmethod
     def get_text_format_description(cls, capitalization, spacing):
-        caps = {0: "<none>", 1: "yell", 2: "tie", 3: "gerrish", 4: "sing", 5: "laws", 6: "say", 7: "cop", 8: "slip"}
+        caps = {0: "<none>", 1: "yell", 2: "tie", 3: "camel", 4: "sing", 5: "laws", 6: "say", 7: "cop", 8: "slip"}
         spaces = {
-            0: "<none>",
+            -1: "<none>",
+            0: "ace",
             1: "gum",
-            2: "spine",
+            2: "kebab",
             3: "snake",
             4: "pebble",
             5: "incline",
@@ -83,8 +84,10 @@ class TextFormat():
     def normalize_text_format(cls, capitalization, spacing):
         if capitalization == 0:
             capitalization = 5
-        if spacing == 0 and capitalization == 3:
-            spacing = 1
+        if spacing == -1:
+            spacing = 0
+            if capitalization in (2, 3):
+                spacing = 1
         return (capitalization, spacing)
 
     def __init__(self, default_cap, default_spacing):
