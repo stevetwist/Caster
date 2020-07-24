@@ -15,7 +15,7 @@ from castervoice.lib.merge.state.short import R
 class Numbers(MergeRule):
     pronunciation = "numbers"
     mapping = {
-        "word number <wn>":
+        "word numb <wn>":
             R(Function(word_number, extra="wn")),
         "numb <wnKK>":
             R(Function(numbers2, extra="wnKK"),
