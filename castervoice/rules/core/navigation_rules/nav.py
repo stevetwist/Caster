@@ -26,6 +26,8 @@ from castervoice.lib.merge.state.actions import AsynchronousAction, ContextSeeke
 from castervoice.lib.merge.state.actions2 import UntilCancelled
 from castervoice.lib.merge.state.short import S, L, R
 
+import castervoice.rules.core.utility_rules.text_formatting
+
 _tpd = text_punc_dict()
 _dtpd = double_text_punc_dict()
 
@@ -123,18 +125,6 @@ class Navigation(MergeRule):
                               ])),
 
         # text formatting
-        "set [<big>] format (<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)]":
-            R(Function(textformat.set_text_format)),
-        "clear castervoice [<big>] formatting":
-            R(Function(textformat.clear_text_format)),
-        "peek [<big>] format":
-            R(Function(textformat.peek_text_format)),
-        "(<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)] <textnv> [brunt]":
-            R(Function(textformat.master_format_text)),
-        "[<big>] format <textnv>":
-            R(Function(textformat.prior_text_format)),
-        "<word_limit> [<big>] format <textnv>":
-            R(Function(textformat.partial_format_text)),
         "hug <enclosure>":
             R(Function(text_utils.enclose_selected)),
         "dredge [<nnavi10>]":
@@ -284,28 +274,8 @@ class Navigation(MergeRule):
         Choice("button_dictionary_500", button_dictionary_500),
         Choice("combined_button_dictionary", combined_button_dictionary),
 
-        Choice("capitalization", {            
-            "yell": 1,
-            "tie": 2,
-            "camel": 3,
-            "sing": 4,
-            "laws": 5,
-            "say": 6,
-            "cop": 7,
-            "slip": 8,
-        }),
-        Choice(
-            "spacing", {
-                "ace": 0,
-                "gum": 1,
-                "gun": 1,
-                "kebab": 2,
-                "snake": 3,
-                "pebble": 4,
-                "incline": 5,
-                "dissent": 6,
-                "descent": 6,
-            }),
+        Choice("capitalization", castervoice.rules.core.utility_rules.text_formatting.capitalizationMap),
+        Choice("spacing", castervoice.rules.core.utility_rules.text_formatting.spacingMap),
         Choice("semi", tell_commands_dict),
         Choice("word_limit", {
             "single": 1,
