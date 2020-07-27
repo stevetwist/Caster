@@ -15,7 +15,7 @@ class TextFormat():
     4 sing - Sentencecase
     5 laws (default) - alllower
     6 say - whatever speech engine provides
-    7 cop - Whatever speech engine provides, initial letter capitalized
+    7 cap - Whatever speech engine provides, initial letter capitalized
     8 slip - whatever speech engine provides, initial letter lowercase
     Commands for word spacing:
     0 ace (default except camel and tie) - words with spaces
@@ -63,7 +63,7 @@ class TextFormat():
 
     @classmethod
     def get_text_format_description(cls, capitalization, spacing):
-        caps = {0: "<none>", 1: "yell", 2: "tie", 3: "camel", 4: "sing", 5: "laws", 6: "say", 7: "cop", 8: "slip"}
+        caps = {0: "<none>", 1: "yell", 2: "tie", 3: "camel", 4: "sing", 5: "laws", 6: "say", 7: "cap", 8: "slip"}
         spaces = {
             -1: "<none>",
             0: "ace",

@@ -11,7 +11,7 @@ capitalizationMap = {
     "sing": 4,
     "laws": 5,
     "say": 6,
-    "cop": 7,
+    "cap": 7,
     "slip": 8,
 }
 
