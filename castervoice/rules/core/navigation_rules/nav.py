@@ -42,6 +42,12 @@ for key, value in _dtpd.items():
         raise Exception(msg.format(str(value)))
 
 
+_enclosureDict = dict(_dtpd)
+for quoteType in ('quote', 'chicky', 'ticky'):
+    _enclosureDict[quoteType] = _enclosureDict["double %s" % quoteType]
+    del _enclosureDict["double %s" % quoteType]
+
+
 class Navigation(MergeRule):
     pronunciation = "navigation"
 
@@ -106,10 +112,10 @@ class Navigation(MergeRule):
             R(Key("escape"), rspec="cancel"),
         "shackle":
             R(Key("home/5, s-end"), rspec="shackle"),
-        "(tell | tau) <semi>":
-            R(Function(navigation.next_line), rspec="tell dock"),
-        "(hark | heart) <semi>":
-            R(Function(navigation.previous_line), rspec="hark dock"),
+        #"(tell | tau) <semi>":
+        #    R(Function(navigation.next_line), rspec="tell dock"),
+        #"(hark | heart) <semi>":
+        #    R(Function(navigation.previous_line), rspec="hark dock"),
         "duplicate [<nnavi50>]":
             R(Function(navigation.duple_keep_clipboard), rspec="duple"),
         "Kraken":
@@ -146,13 +152,13 @@ class Navigation(MergeRule):
         # keystroke commands
         "<direction> [<nnavi500>]":
             R(Key("%(direction)s")*Repeat(extra='nnavi500'), rdescript="arrow keys"),
-        "(left wally | latch) [<nnavi10>]":
+        "home [<nnavi10>]":
             R(Key("home:%(nnavi10)s")),
-        "(right wally | ratch) [<nnavi10>]":
+        "end [<nnavi10>]":
             R(Key("end:%(nnavi10)s")),
-        "up wally [<nnavi10>]":
+        "big home [<nnavi10>]":
             R(Key("c-home:%(nnavi10)s")),
-        "down wally [<nnavi10>]":
+        "big end [<nnavi10>]":
             R(Key("c-end:%(nnavi10)s")),
         "bird [<nnavi500>]":
             R(Key("c-left:%(nnavi500)s")),
@@ -218,8 +224,8 @@ class Navigation(MergeRule):
     }
     button_dictionary_10.update(longhand_punctuation_names)
     button_dictionary_1 = {
-        "(home | left wally | latch)": "home",
-        "(end | right wally | ratch)": "end",
+        "home": "home",
+        "end": "end",
         "insert": "insert",
         "zero": "0",
         "one": "1",
@@ -261,7 +267,7 @@ class Navigation(MergeRule):
         IntegerRefST("nnavi50", 1, 50),
         IntegerRefST("nnavi500", 1, 500),
         Dictation("textnv"),
-        Choice("enclosure", _dtpd),
+        Choice("enclosure", _enclosureDict),
         Choice("direction", {
             "down": "down",
             "up": "up",
