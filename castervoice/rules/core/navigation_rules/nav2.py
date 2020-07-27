@@ -60,7 +60,7 @@ class NavigationNon(MappingRule):
                 blocking=False)),
         "colic":
             R(Key("control:down") + Mouse("left") + Key("control:up")),
-        "garb [<nnavi500>]":
+        "grab [<nnavi500>]":
             R(Mouse("left") + Mouse("left") + Function(
                 navigation.stoosh_keep_clipboard)),
         "drop [<nnavi500>]":
@@ -68,11 +68,11 @@ class NavigationNon(MappingRule):
                 navigation.drop_keep_clipboard,
                 capitalization=0,
                 spacing=0)),
-        "sure stoosh":
+        "sure copy":
             R(Key("c-c")),
         "sure cut":
             R(Key("c-x")),
-        "sure spark":
+        "sure paste":
             R(Key("c-v")),
         "refresh":
             R(Key("c-r")),

@@ -84,18 +84,18 @@ class Navigation(MergeRule):
         # keyboard shortcuts
         'save':
             R(Key("c-s"), rspec="save"),
-        'shock [<nnavi50>]':
-            R(Key("enter"), rspec="shock")*Repeat(extra="nnavi50"),
+        'enter [<nnavi50>]':
+            R(Key("enter"), rspec="enter")*Repeat(extra="nnavi50"),
         # "(<mtn_dir> | <mtn_mode> [<mtn_dir>]) [(<nnavi500> | <extreme>)]":
         #     R(Function(text_utils.master_text_nav)), # this is now implemented below
         "shift click":
             R(Key("shift:down") + Mouse("left") + Key("shift:up")),
-        "stoosh [<nnavi500>]":
-            R(Function(navigation.stoosh_keep_clipboard), rspec="stoosh"),
+        "copy [<nnavi500>]":
+            R(Function(navigation.stoosh_keep_clipboard), rspec="copy"),
         "cut [<nnavi500>]":
             R(Function(navigation.cut_keep_clipboard), rspec="cut"),
-        "spark [<nnavi500>] [(<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)]]":
-            R(Function(navigation.drop_keep_clipboard), rspec="spark"),
+        "paste [<nnavi500>] [(<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)]]":
+            R(Function(navigation.drop_keep_clipboard), rspec="paste"),
         "splat [<splatdir>] [<nnavi10>]":
             R(Key("c-%(splatdir)s"), rspec="splat")*Repeat(extra="nnavi10"),
         "deli [<nnavi50>]":
@@ -110,7 +110,7 @@ class Navigation(MergeRule):
             R(Function(navigation.next_line), rspec="tell dock"),
         "(hark | heart) <semi>":
             R(Function(navigation.previous_line), rspec="hark dock"),
-        "duple [<nnavi50>]":
+        "duplicate [<nnavi50>]":
             R(Function(navigation.duple_keep_clipboard), rspec="duple"),
         "Kraken":
             R(Key("c-space"), rspec="Kraken"),
@@ -188,11 +188,11 @@ class Navigation(MergeRule):
     # I tried to limit which things get repeated how many times in hopes that it will help prevent the bad grammar error
     # this could definitely be changed. perhaps some of these should be made non-CCR
     button_dictionary_500 = {
-        "(tab | tabby)": "tab",
+        "tab": "tab",
         "(backspace | clear)": "backspace",
         "(delete|deli)": "del",
         "(escape | cancel)": "escape",
-        "(enter | shock)": "enter",
+        "enter": "enter",
         "(left | lease)": "left",
         "(right | ross)": "right",
         "(up | sauce)": "up",

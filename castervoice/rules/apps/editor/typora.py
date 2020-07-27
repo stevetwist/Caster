@@ -24,7 +24,7 @@ class TyporaRule(MappingRule):
         "save as": R(Key("cs-s")),
         "close file": R(Key("c-w")),
         # Edit
-        # "new paragraph": R(Key("enter")) * Repeat(extra="h"), # Caster: "shock"
+        # "new paragraph": R(Key("enter")) * Repeat(extra="h"), # Caster: "enter"
         "new line <h>": R(Key("s-enter"))*Repeat(extra="h"),
         "copy [as] markdown": R(Key("cs-c")),
         "delete row <n>": R(Key("cs-backspace"))*Repeat(extra="n"),

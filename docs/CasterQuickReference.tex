@@ -124,58 +124,62 @@ whiskey \\ x-ray \\ yankee \\ zulu \\
 \command{tab}{\texttt{TAB}}
 \command{shin tab}{\texttt{SHIFT-TAB}}
 \command{ace}{\texttt{SPACE}}
-\command{clamor}{\texttt{!}}
-\command{chocky}{\texttt{"}}
-\command{quotes \footnotemark[2]}{\texttt{""}}
-\command{hashtag}{\texttt{\#}}
-\command{dolly}{\texttt{\$}}
-\command{modulo}{\texttt{\%}}
-\command{ampersand}{\texttt{\&}}
-\command{chicky | apostrophe}{\texttt{\textquotesingle}}
-\command{thin quotes \footnotemark[2]}{\texttt{\textquotesingle\textquotesingle}}
-\command{prekris \footnotemark[2]\footnotemark[6]}{\texttt{()}}
-\command{starling}{\texttt{*}}
-\command{\footnotemark[5] plus}{\texttt{+}}
-\command{comma}{\texttt{,}}
-\command{boom \footnotemark[3]}{\texttt{,}$\,\,$}
-\columnbreak
-\command{\footnotemark[5] minus}{\texttt{-}}
-\command{period | dot}{\texttt{.}}
-\command{bam \footnotemark[3]}{\texttt{.}$\,\,$}
+\command{quote \footnotemark[6]}{\texttt{"}}
+\command{chicky \footnotemark[6] | apostrophe}{\texttt{\textquotesingle}}
+\command{ticky \footnotemark[6]}{\texttt{\textasciigrave}}
+\command{par \footnotemark[2]\footnotemark[7]}{\texttt{()}}
+\command{brax \footnotemark[2]\footnotemark[7]}{\texttt{[]}}
+\command{angle \footnotemark[2]\footnotemark[7]}{\texttt{<>}}
+\command{curly \footnotemark[2]\footnotemark[7]}{\texttt{\{\}}}
+\command{comma \footnotemark[3]\footnotemark[5]}{\texttt{, }}
+\command{dot | period \footnotemark[3]}{\texttt{.}}
 \command{slash}{\texttt{/}}
-\command{deckle}{\texttt{:}}
-\command{semper}{\texttt{;}}
-\command{angle \footnotemark[2]\footnotemark[6]}{\texttt{<>}}
-\command{\footnotemark[5] equals}{\texttt{=}}
-\command{questo}{\texttt{?}}
-\command{atty}{\texttt{@}}
-\command{brax \footnotemark[2]\footnotemark[6]}{\texttt{[]}}
-\command{backslash}{\texttt{\textbackslash}}
-\command{carrot}{\texttt{\^}}
+\command{backslash \footnotemark[6]}{\texttt{\textbackslash}}
 \command{underscore}{\texttt{\_}}
-\command{ticky}{\texttt{\textasciigrave}}
-\command{tickris \footnotemark[2]}{\texttt{\textasciigrave\textasciigrave}}
-\command{curly \footnotemark[2]\footnotemark[6]}{\texttt{\{\}}}
-\command{tilde}{\texttt{\~}}
 \command{pipe (sim | symbol)}{\texttt{|}}
+
+\columnbreak
+
+\command{plus \footnotemark[4]\footnotemark[5]}{\texttt{ + }}
+\command{minus \footnotemark[4]\footnotemark[5]}{\texttt{ - }}
+\command{star | times \footnotemark[4] }{\texttt{*}}
+\command{divide \footnotemark[4]}{\texttt{ / }}
+\command{equals \footnotemark[4]\footnotemark[5]}{\texttt{ = }}
+\command{bang}{\texttt{!}}
+\command{question}{\texttt{?}}
+\command{atty | at symbol}{\texttt{@}}
+\command{hashtag}{\texttt{\#}}
+\command{dollar}{\texttt{\$}}
+\command{ampersand}{\texttt{\&}}
+\command{mod \footnotemark[4]\footnotemark[5]}{\texttt{ \% }}
+\command{colon}{\texttt{:}}
+\command{semicolon}{\texttt{;}}
+\command{carrot}{\texttt{\^}}
+\command{tilde}{\texttt{\~}}
+
+
 \end{multicols}
 
 \footnotetext[2]{Left key is pressed after}
 \footnotetext[3]{Space bar is pressed after}
-\footnotetext[4]{Repeatable by saying number after}
-\footnotetext[5]{Prefix with "long" to get spaces either side}
-\footnotetext[6]{Left or right available by prefixing with ``left'' or ``right''}
+\footnotetext[4]{Space inserted before and after}
+\footnotetext[5]{Prefix with "short" to not insert space(s)}
+\footnotetext[6]{Prefix with "double" to insert two of these characters}
+\footnotetext[7]{Left or right available by prefixing with ``open'' or ``close''}
+
+
+
 
 %----------------------------------------------------------------------------------------
 
 \vspace{-1em}
 \sectiontitle{Comparisons}
 
-\command{[is] greater than}{\texttt{>}}
-\command{[is] less than}{\texttt{<}}
-\command{[is] greater [than] [or] equal [to]}{\texttt{>=}}
-\command{[is] less [than] [or] equal [to]}{\texttt{<=}}
-\command{[is] equal to}{\texttt{==}}
+\command{[is] greater than\footnotemark[4]}{\texttt{>}}
+\command{[is] less than\footnotemark[4]}{\texttt{<}}
+\command{[is] greater [than] [or] equal [to]\footnotemark[4]}{\texttt{>=}}
+\command{[is] less [than] [or] equal [to]\footnotemark[4]}{\texttt{<=}}
+\command{[is] equal to\footnotemark[4]}{\texttt{==}}
 \vspace{-1em}
 
 \end{minipage} % End the first column of text
@@ -204,7 +208,7 @@ whiskey \\ x-ray \\ yankee \\ zulu \\
 
 \command{clear \footnotemark[4]}{bkspc}
 \command{deli \footnotemark[4]}{del}
-\command{shock \footnotemark[4]}{enter}
+\command{enter \footnotemark[4]}{enter}
 \command{cancel}{escape}
 \command{save}{ctrl - s}
 
@@ -232,12 +236,12 @@ whiskey \\ x-ray \\ yankee \\ zulu \\
 
 \sectiontitle{Copy and Paste}
 
-\command{stoosh \footnotemark[3]}{copy}
+\command{copy \footnotemark[3]}{copy}
 \command{cut \footnotemark[3]}{cut}
-\command{spark \footnotemark[3] \footnotemark[6]}{paste}
-\command{garb \footnotemark[3]}{double-click + copy}
+\command{paste \footnotemark[3] \footnotemark[6]}{paste}
+\command{grab \footnotemark[3]}{double-click + copy}
 \command{drop \footnotemark[3]}{double-click + paste}
-\command{duple \footnotemark[2]}{duplicate line}
+\command{duplicate \footnotemark[2]}{duplicate line}
 
 \footnotetext[3]{Takes optional number parameter, which is used to determine a persistent clipboard slot}
 \footnotetext[6]{Takes optional formatting parameters, e.g. "spark tie"}

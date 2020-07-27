@@ -29,10 +29,6 @@ class Punctuation(MergeRule):
             R(Key("tab"))*Repeat(extra="npunc"),
         "(back | shin) tab [<npunc>]":
             R(Key("s-tab"))*Repeat(extra="npunc"),
-        "boom [<npunc>]":
-            R(Text(", "))*Repeat(extra="npunc"),
-        "bam [<npunc>]":
-            R(Text(". "))*Repeat(extra="npunc"),
         "ace [<npunc100>]":
             R(Text(" "))*Repeat(extra="npunc100"),
     }
