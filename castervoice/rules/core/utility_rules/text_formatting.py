@@ -6,7 +6,7 @@ import castervoice.lib.textformat
 
 capitalizationMap = {
     "yell": 1,
-    "tie": 2,
+    "title": 2,
     "camel": 3,
     "sing": 4,
     "laws": 5,
