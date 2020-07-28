@@ -304,48 +304,176 @@ Must pause after issuing command. This is not a CCR/merge command.
 \end{picture} % End the container for the entire page
 
 
+
+\begin{picture}(297,210) % Create a container for the page content
+\put(10,200){ % Divide the page
+	\begin{minipage}[t]{85mm} % Create a box to house text
+	
+	%----------------------------------------------------------------------------------------
+	
+	\sectiontitle{Python (Visual Studio Code)}
+		
+	\command{enable Python}{activate module}
+	
+	\begin{multicols}{2}
+	
+	bit shift (left|right) \\
+	\command{bitwise and}{\texttt{\&}}
+	\command{bitwise or}{\texttt{|}}
+	\command{bitwise complement}{\texttt{\~}}
+	\command{bitwise xor}{\texttt{\^}}
+	and \\
+	as \\
+	break \\
+	class \\
+	"c method"\\
+	\command{.}{\texttt{class method}}
+	continue \\
+	\command{pie deli}{\texttt{del}}
+	derived class \\
+	elif \\
+	else \\
+	except \\
+	false \\
+	finally \\
+	for \\
+	
+	\columnbreak
+	
+	from \\
+	function \\
+	global \\
+	if \\
+	in \\
+	import \\
+	is \\
+	method \\
+	none \\
+	not \\
+	or \\
+	pass \\
+	raise \\
+	return \\
+	static method \\
+	true \\
+	try \\
+	while \\
+	with \\
+	short with \\	
+	\end{multicols}
+	%----------------------------------------------------------------------------------------
+	
+	
+	TODO: List VS Code helper functions
+	
+	
+	\end{minipage}
+} % End the first division of the page
+
+%----------------------------------------------------------------------------------------
+
+\put(105,200){ % Divide the page
+	\begin{minipage}[t]{85mm} % Create a box to house text
+	
+	\sectiontitle{C++ (Visual Studio)}
+		
+	\command{enable C plus plus}{activate module}
+	
+	\begin{multicols}{2}
+	
+	TODO: List C++ commands
+	
+	\end{multicols}
+	
+	
+	TODO: List Visual Studio Helper Functions
+	
+	%----------------------------------------------------------------------------------------
+	
+	\end{minipage}
+}
+
+\put(200, 200){
+	\begin{minipage}[t]{85mm}
+	%----------------------------------------------------------------------------------------
+	
+	
+	\sectiontitle{Mouse Replacement}
+	
+	\command{kick}{left click}
+	\command{kick mid}{middle click}
+	\command{psychic}{right click}
+	\command{shift right click}{shift right click}
+	\command{shift click}{shift click}
+	\command{squat}{left button down}
+	\command{bench}{left button up}
+	\command{lean}{right button down}
+	\command{hoist}{right button up}
+	\command{colic}{control left click}
+	\command{scree \footnotemark[1]}{scroll wheel}
+	\command{curse}{move cursor by pixels}
+	\command{douglas}{move cursor on grid}
+	\command{rainbow}{alternate grid}
+	\command{legion}{smart text selection}
+	
+	\footnotetext[1]{Takes optional direction parameter, one of the direction keys from table (5)}
+	
+	\sectiontitle{Window Management}
+	
+	\command{minimise win}{minimise window}
+	\command{maximise win}{maximise window}
+	\command{dredge \footnotemark[2]}{alt + tab}
+	\command{switch window}{display all windows}
+	\command{move window}{move with arrow keys}
+	\command{window left}{snap window to left}
+	\command{window right}{snap window to right}
+	\command{show work}{show active workspaces}
+	\command{new work}{create a new workspace}
+	\command{close work}{close the current workspace}
+	\command{close all work}{close all workspaces}
+	\command{previous work \footnotemark[2]}{go to the previous workspace}
+	\command{next work \footnotemark[2]}{go to the next workspace}
+	\command{go work <n>}{go to workspace number n}
+	\command{send work <n>}{send the current window to workspace n}
+	\command{move work <n>}{move the current window to workspace n}
+	
+	\footnotetext[2]{Takes an optional number parameter for repetition}
+	
+
+	%----------------------------------------------------------------------------------------
+	\end{minipage}
+}
+\end{picture} % End the container for the entire page
+%----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 \begin{picture}(297,210) % Create a container for the page content
 \put(10,200){ % Divide the page
 \begin{minipage}[t]{85mm} % Create a box to house text
 
 %----------------------------------------------------------------------------------------
 
-\sectiontitle{Programming Core\protect\footnotemark[1]}
+\sectiontitle{Repetition}
 
-\footnotetext[1]{See the CCR languages quick reference in the docs for details of the language specific commands.}
+\command{again do}{repeat last dictation}
+\command{again <n> times}{repeat last dictation*n}
 
-\command{enable <language>}{activate module}
+\sectiontitle{Dragon}
 
-\begin{multicols}{2}
+\command{(command | dictation | normal | spell | numbers) mode on}{switch dragon modes (native dragon commands)}\\
+\command{scratch that}{undo previous dictation}\\
+\command{sratch <n>}{undo previous n dictations}\\
+\command{fix dragon double}{delete initial dictated char}\\
+\command{show windows}{show list of windows}\\
 
-iffae \\
-shells \\
-shell iffae \\
-switch \\
-breaker \\
-default \\
-for each \\
-for loop \\
-do loop \\
-while loop \\
-convert to integer \\
-convert to floating point \\
-convert to string \\
-lodge and \\
-lodge or \\
-lodge not \\
-print to console \\
-function \\
-class \\
-add comment \\
-long comment \\
-value not \\
-return \\
-value true \\
-value false \\
-
-\end{multicols}
-%----------------------------------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
 
@@ -357,42 +485,10 @@ value false \\
 \put(105,200){ % Divide the page
 \begin{minipage}[t]{85mm} % Create a box to house text
 
-\sectiontitle{Window Management}
-
-\command{minimise win}{minimise window}
-\command{maximise win}{maximise window}
-\command{dredge \footnotemark[1]}{alt + tab}
-\command{switch window}{display all windows}
-\command{move window}{move with arrow keys}
-\command{window left}{snap window to left}
-\command{window right}{snap window to right}
-\command{show work}{show active workspaces}
-\command{new work}{create a new workspace}
-\command{close work}{close the current workspace}
-\command{close all work}{close all workspaces}
-\command{previous work \footnotemark[1]}{go to the previous workspace}
-\command{next work \footnotemark[1]}{go to the next workspace}
-\command{go work <n>}{go to workspace number n}
-\command{send work <n>}{send the current window to workspace n}
-\command{move work <n>}{move the current window to workspace n}
-
-\footnotetext[1]{Takes an optional number parameter for repetition}
-%----------------------------------------------------------------------------------------
-
-\sectiontitle{Repetition}
-
-\command{again do}{repeat last dictation}
-\command{again <n> times}{repeat last dictation*n}
-\command{record from history}{open macro recorder}
-\command{complete}{save macro}
-\command{delete recorded macros}{delete recorded macros}
 
 %----------------------------------------------------------------------------------------
 
-\sectiontitle{Aliasing}
 
-\command{alias <dict>}{alias highlighted text}
-\command{chain alias <dict>}{alias as CCR}
 
 %----------------------------------------------------------------------------------------
 
@@ -403,78 +499,13 @@ value false \\
 \begin{minipage}[t]{85mm}
 %----------------------------------------------------------------------------------------
 
-\sectiontitle{Template-based Navigation}
-
-\command{jump in \footnotemark[2]}{move cursor inside next ([\{<}
-\command{jump out \footnotemark[2]}{move cursor past next )]\}>}
-\command{jump back \footnotemark[2]}{move cursor inside prev )]\}>}
-\command{fill <target> \footnotemark[2]}{highlight <target> in line}
-
-\footnotetext[2]{All of these are asynchronous, and can be cancelled with the word "cancel" if the search is taking too long. See \textit{navigation.py} for a full list of targets.}
 
 
-%----------------------------------------------------------------------------------------
-
-\sectiontitle{Mouse Replacement}
-
-\command{kick}{left click}
-\command{kick mid}{middle click}
-\command{psychic}{right click}
-\command{shift right click}{shift right click}
-\command{shift click}{shift click}
-\command{squat}{left button down}
-\command{bench}{left button up}
-\command{lean}{right button down}
-\command{hoist}{right button up}
-\command{colic}{control left click}
-\command{scree \footnotemark[1]}{scroll wheel}
-\command{curse}{move cursor by pixels}
-\command{douglas}{move cursor on grid}
-\command{rainbow}{alternate grid}
-\command{legion}{smart text selection}
-\command{left point}{mouse to screen left}
-\command{center point}{mouse to screen center}
-\command{right point}{mouse to screen right}
-
-\footnotetext[1]{Takes optional direction parameter, one of the direction keys from table (5)}
-
-
-\sectiontitle{Dragon}
-
-\command{number/spell/dictation/normal/command mode}{switch dragon modes}
-
-\sectiontitle{Update and Caster Management}
-
-\command{clear caster log}{Clears Log Window}
-\command{update dragonfly}{Updates Dragonfly}
-\command{reboot caster}{Restarts Caster}
-\command{caster settings editor}{Caster settings editor}
 
 %----------------------------------------------------------------------------------------
 \end{minipage}
 }
 \end{picture} % End the container for the entire page
 %----------------------------------------------------------------------------------------
-
-\begin{picture}(297,210) % Create a container for the page content
-\put(10,200){ % Divide the page
-\begin{minipage}[t]{85mm} % Create a box to house text
-\sectiontitle{Example command chains}
-
-\examplecommand{shackle clear}{Select and delete the current line}
-\examplecommand{queue lease stoosh three}{Store the previous word/variable name in position three}
-\examplecommand{queue lease three hug brax}{Enclose the previous three elements in square brackets}
-\examplecommand{shackle cut dunce four spark}{Cut the current line, move down four, paste}
-\examplecommand{shin ross wally clear}{Select to the end of the line, delete}
-\examplecommand{ross wally clear four}{Go to the end of the line, backspace four}
-\examplecommand{snake variable name}{variable\_name}
-\examplecommand{curly quotes arch ross deckle quotes brov}{\{"a":"b"\}}
-\examplecommand{backslash format command curly}{\textbackslash command\{\}}
-\examplecommand{(python) tell sink print to console spark three}{new line, print(<third clipboard position>)}
-%----------------------------------------------------------------------------------------
-\end{minipage}
-}
-
-\end{picture} % End the container for the entire page
 
 \end{document}
