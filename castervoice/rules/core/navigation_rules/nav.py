@@ -65,27 +65,27 @@ class Navigation(MergeRule):
                       use_spoken=True))
             ]),
         # VoiceCoder-inspired -- these should be done at the IDE level
-        "fill <target>":
-            R(Key("escape, escape, end"), show=False) +
-            AsynchronousAction([L(S(["cancel"], Function(context.fill_within_line)))],
-            time_in_seconds=0.2, repetitions=50 ),
-        "jump in":
-            AsynchronousAction([L(S(["cancel"], context.nav, ["right", "(~[~{~<"]))],
-                               time_in_seconds=0.1,
-                               repetitions=50),
-        "jump out":
-            AsynchronousAction([L(S(["cancel"], context.nav, ["right", ")~]~}~>"]))],
-                               time_in_seconds=0.1,
-                               repetitions=50),
-        "jump back":
-            AsynchronousAction([L(S(["cancel"], context.nav, ["left", "(~[~{~<"]))],
-                               time_in_seconds=0.1,
-                               repetitions=50),
-        "jump back in":
-            AsynchronousAction([L(S(["cancel"], context.nav, ["left", "(~[~{~<"]))],
-                               finisher=Key("right"),
-                               time_in_seconds=0.1,
-                               repetitions=50),
+        #"fill <target>":
+        #    R(Key("escape, escape, end"), show=False) +
+        #    AsynchronousAction([L(S(["cancel"], Function(context.fill_within_line)))],
+        #    time_in_seconds=0.2, repetitions=50 ),
+        #"jump in":
+        #    AsynchronousAction([L(S(["cancel"], context.nav, ["right", "(~[~{~<"]))],
+        #                       time_in_seconds=0.1,
+        #                       repetitions=50),
+        #"jump out":
+        #    AsynchronousAction([L(S(["cancel"], context.nav, ["right", ")~]~}~>"]))],
+        #                       time_in_seconds=0.1,
+        #                       repetitions=50),
+        #"jump back":
+        #    AsynchronousAction([L(S(["cancel"], context.nav, ["left", "(~[~{~<"]))],
+        #                       time_in_seconds=0.1,
+        #                       repetitions=50),
+        #"jump back in":
+        #    AsynchronousAction([L(S(["cancel"], context.nav, ["left", "(~[~{~<"]))],
+        #                     finisher=Key("right"),
+        #                       time_in_seconds=0.1,
+        #                       repetitions=50),
 
         # keyboard shortcuts
         'save':
@@ -118,8 +118,8 @@ class Navigation(MergeRule):
         #    R(Function(navigation.previous_line), rspec="hark dock"),
         "duplicate [<nnavi50>]":
             R(Function(navigation.duple_keep_clipboard), rspec="duple"),
-        "Kraken":
-            R(Key("c-space"), rspec="Kraken"),
+        #"Kraken":
+        #    R(Key("c-space"), rspec="Kraken"),
         "undo [<nnavi10>]":
             R(Key("c-z"))*Repeat(extra="nnavi10"),
         "redo [<nnavi10>]":
@@ -133,9 +133,9 @@ class Navigation(MergeRule):
         # text formatting
         "hug <enclosure>":
             R(Function(text_utils.enclose_selected)),
-        "dredge [<nnavi10>]":
-            R(Key("alt:down, tab/20:%(nnavi10)d, alt:up"),
-              rdescript="Core: switch to most recent Windows"),
+        #"dredge [<nnavi10>]":
+        #    R(Key("alt:down, tab/20:%(nnavi10)d, alt:up"),
+        #      rdescript="Core: switch to most recent Windows"),
 
         # Ccr Mouse Commands
         "kick [<nnavi3>]":
@@ -160,18 +160,18 @@ class Navigation(MergeRule):
             R(Key("c-home:%(nnavi10)s")),
         "big end [<nnavi10>]":
             R(Key("c-end:%(nnavi10)s")),
-        "bird [<nnavi500>]":
-            R(Key("c-left:%(nnavi500)s")),
-        "firch [<nnavi500>]":
-            R(Key("c-right:%(nnavi500)s")),
-        "brick [<nnavi500>]":
-            R(Key("s-left:%(nnavi500)s")),
-        "frick [<nnavi500>]":
-            R(Key("s-right:%(nnavi500)s")),
-        "blitch [<nnavi500>]":
-            R(Key("cs-left:%(nnavi500)s")),
-        "flitch [<nnavi500>]":
-            R(Key("cs-right:%(nnavi500)s")),
+        #"bird [<nnavi500>]":
+        #    R(Key("c-left:%(nnavi500)s")),
+        #"firch [<nnavi500>]":
+        #    R(Key("c-right:%(nnavi500)s")),
+        #"brick [<nnavi500>]":
+        #    R(Key("s-left:%(nnavi500)s")),
+        #"frick [<nnavi500>]":
+        #    R(Key("s-right:%(nnavi500)s")),
+        #"blitch [<nnavi500>]":
+        #    R(Key("cs-left:%(nnavi500)s")),
+        #"flitch [<nnavi500>]":
+        #    R(Key("cs-right:%(nnavi500)s")),
         "<modifier> <button_dictionary_500> [<nnavi500>]":
             R(Key("%(modifier)s%(button_dictionary_500)s")*Repeat(extra='nnavi500'),
               rdescript="press modifier keys plus buttons from button_dictionary_500"),

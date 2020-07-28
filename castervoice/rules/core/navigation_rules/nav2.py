@@ -39,8 +39,8 @@ class NavigationNon(MappingRule):
             R(Key("c-h")),
         "F<function_key>":
             R(Key("f%(function_key)s")),
-        "[show] context menu":
-            R(Key("s-f10")),
+        #"[show] context menu":
+        #    R(Key("s-f10")),
         "lean":
             R(Function(navigation.right_down)),
         "hoist":
@@ -68,14 +68,14 @@ class NavigationNon(MappingRule):
                 navigation.drop_keep_clipboard,
                 capitalization=0,
                 spacing=0)),
-        "sure copy":
-            R(Key("c-c")),
-        "sure cut":
-            R(Key("c-x")),
-        "sure paste":
-            R(Key("c-v")),
-        "refresh":
-            R(Key("c-r")),
+        #"sure copy":
+        #    R(Key("c-c")),
+        #"sure cut":
+        #    R(Key("c-x")),
+        #"sure paste":
+        #    R(Key("c-v")),
+        #"refresh":
+        #    R(Key("c-r")),
         "maxiwin":
             R(Key("w-up")),
         "move window":
@@ -98,8 +98,8 @@ class NavigationNon(MappingRule):
             R(Key("c-pgup"))*Repeat(extra="n"),
         "close tab [<n>]":
             R(Key("c-w/20"))*Repeat(extra="n"),
-        "elite translation <text>":
-            R(Function(alphabet_support.elite_text)),
+        #"elite translation <text>":
+        #    R(Function(alphabet_support.elite_text)),
     }
 
     extras = [
