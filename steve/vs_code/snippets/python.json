@@ -1,0 +1,178 @@
+{
+	// Python snippets for VisualStudio Code
+
+	// NOTE: These are designed for invoking with voice commands, hence the unusual prefix
+	// to ensure 100% match (st_cs -> Steve Twist Code Snippet)
+
+	"from" : {
+		"prefix" : "st_cs_from",
+		"body" : [
+			"from ${1:source} import ${2:target}"
+		],
+		"description" : "from import"
+	},
+
+	"class" : {
+		"prefix" : "st_cs_class",
+		"body" : [
+			"class ${1:ClassName}:",
+			"\tdef __init__(self):",
+			"\t\tpass"
+		],
+		"description" : "class"
+	},
+
+	"function" : {
+		"prefix" : "st_cs_function",
+		"body" : [
+			"def ${1:functionName}(${2}):",
+			"\t${3:pass }"
+		],
+		"description": "function"
+	},
+
+	"method" : {
+		"prefix" : "st_cs_method",
+		"body" : [
+			"def ${1:MethodName}(self${2}):",
+			"\t${3:pass }"
+		],
+		"description": "method"
+	},
+
+	"static_method" : {
+		"prefix" : "st_cs_static_method",
+		"body" : [
+			"@staticmethod",
+			"def ${1:MethodName}(${2}):",
+			"\t${3:pass }"
+		],
+		"description": "method"
+	},
+
+	"class_method" : {
+		"prefix" : "st_cs_class_method",
+		"body" : [
+			"@classmethod",
+			"def ${1:MethodName}(cls${2}):",
+			"\t${3:pass }"
+		],
+		"description": "method"
+	},
+
+	"derived_class" : {
+		"prefix" : "st_cs_derived_class",
+		"body" : [
+			"class ${1:ClassName}(${2:BaseClassName}):",
+			"\tdef __init__(self):",
+			"\t\t${2}.__init__(self)"
+		],
+		"description" : "derived class"
+	}
+
+
+	"if" : {
+		"prefix" : "st_cs_if",
+		"body" : [
+			"if (${1:expression}):",
+			"\t${2:pass }"
+		],
+		"description" : "if statement"
+	},
+
+	"elif" : {
+		"prefix" : "st_cs_elif",
+		"body" : [
+			"elif (${1:expression}):",
+			"\t${2:pass }"
+		],
+		"description" : "elif statement"
+	},
+
+	"else" : {
+		"prefix" : "st_cs_else",
+		"body" : [
+			"else:",
+			"\t${1:pass }"
+		],
+		"description" : "else statement"
+	},
+
+	"for" : {
+		"prefix" : "st_cs_for",
+		"body" : [
+			"for ${1:target_list} in ${2:element_list}:",
+			"\t${3:pass }"
+		],
+		"description" : "for loop"
+	},
+
+	"while" : {
+		"prefix" : "st_cs_while",
+		"body" : [
+			"while (${1:expression}):",
+			"\t${2:pass }"
+		],
+		"description" : "while loop"
+	},
+
+	"try" : {
+		"prefix" : "st_cs_try",
+		"body" : [
+			"try:",
+			"\t${1:pass }"
+		],
+		"description" : "try block"
+	},
+
+	"except" : {
+		"prefix" : "st_cs_except",
+		"body" : [
+			"except ${1:Exception}:",
+			"\t${2:pass }"
+		],
+		"description" : "except block"
+	},
+
+	"finally" : {
+		"prefix" : "st_cs_finally",
+		"body" : [
+			"finally:",
+			"\t${1:pass }"
+		],
+		"description" : "finally block"
+	},
+
+	"with" : {
+		"prefix" : "st_cs_with",
+		"body" : [
+			"with ${1:expression} as ${2:variable}:",
+			"\t${3:pass }"
+		],
+		"description" : "with <1> as <2>:"
+	},
+
+	"short_with" : {
+		"prefix" : "st_cs_short_with",
+		"body" : [
+			"with ${1:expression}:",
+			"\t${2:pass }"
+		],
+		"description" : "with <1>:"
+	},
+
+
+	// Place your snippets for python here. Each snippet is defined under a snippet name and has a prefix, body and
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+}
