@@ -209,13 +209,12 @@ whiskey \\ x-ray \\ yankee \\ zulu \\
 \command{left \footnotemark[4]}{left}
 \command{right \footnotemark[4]}{right}
 
-\footnotetext[4]{Repeatable by saying number after}
 %----------------------------------------------------------------------------------------
 
 \sectiontitle{Editing}
 
-\command{clear \footnotemark[4]}{bkspc}
-\command{deli \footnotemark[4]}{del}
+\command{\footnotemark[3] clear \footnotemark[4]}{bkspc}
+\command{\footnotemark[3] deli \footnotemark[4]}{del}
 \command{enter \footnotemark[4]}{enter}
 \command{cancel}{escape}
 \command{save}{ctrl - s}
@@ -228,17 +227,17 @@ whiskey \\ x-ray \\ yankee \\ zulu \\
 \command{shin \footnotemark[1] \footnotemark[2]}{shift - <dir>}
 \command{queue \footnotemark[1] \footnotemark[2]}{ctrl - shift - <dir>}
 \command{fly \footnotemark[1] \footnotemark[2]}{ctrl - <dir>}
-\command{splat \footnotemark[1] \footnotemark[2]}{ctrl - del/bkspc}
-\command{\footnotemark[7] home}{home}
-\command{\footnotemark[7] end}{end}
+\command{\footnotemark[3] home}{home}
+\command{\footnotemark[3] end}{end}
 \command{kraken}{ctrl + space}
 \command{hug <enclose> \footnotemark[5]}{encloses target}
 
 
 \footnotetext[1]{Takes optional direction parameter, one of the direction keys from table (5)}
 \footnotetext[2]{Takes optional number parameter for repetition}
+\footnotetext[3]{Prefix with "big" for ctrl+}
+\footnotetext[4]{Repeatable by saying number after}
 \footnotetext[5]{Takes par, brax, curly, angle, quote, chicky, ticky}
-\footnotetext[7]{Prefix with "big" for ctrl-(home|end)}
 
 %----------------------------------------------------------------------------------------
 

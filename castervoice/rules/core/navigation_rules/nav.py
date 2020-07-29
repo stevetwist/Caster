@@ -102,12 +102,16 @@ class Navigation(MergeRule):
             R(Function(navigation.cut_keep_clipboard), rspec="cut"),
         "paste [<nnavi500>] [(<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)]]":
             R(Function(navigation.drop_keep_clipboard), rspec="paste"),
-        "splat [<splatdir>] [<nnavi10>]":
-            R(Key("c-%(splatdir)s"), rspec="splat")*Repeat(extra="nnavi10"),
+        #"splat [<splatdir>] [<nnavi10>]":
+        #    R(Key("c-%(splatdir)s"), rspec="splat")*Repeat(extra="nnavi10"),
         "deli [<nnavi50>]":
             R(Key("del/5"), rspec="deli")*Repeat(extra="nnavi50"),
+        "big deli [<nnavi50>]":
+            R(Key("c-del/5"), rspec="deli")*Repeat(extra="nnavi50"),
         "clear [<nnavi50>]":
             R(Key("backspace/5:%(nnavi50)d"), rspec="clear"),
+        "big clear [<nnavi50>]":
+            R(Key("c-backspace/5:%(nnavi50)d"), rspec="clear"),
         SymbolSpecs.CANCEL:
             R(Key("escape"), rspec="cancel"),
         "shackle":
