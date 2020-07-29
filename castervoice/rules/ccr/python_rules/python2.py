@@ -1,10 +1,13 @@
 import time
 
-from dragonfly import Choice, Function, MappingRule
+from dragonfly import Choice, Dictation, Function, MappingRule, Pause, Repeat
 
 from castervoice.lib.actions import Text, Key
 from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.merge.state.short import R
+
+from word2number import w2n
 
 codeSnippetMap = {
     "from" : "st_cs_from",
@@ -51,6 +54,22 @@ def _codeSnippet(codeSnippet):
     R(Key('tab')).execute()
 
 
+def _goToLine(numbers):
+    numberWordsStr = str(numbers)    
+    try:
+        numbersStr = str(w2n.word_to_num(numberWordsStr))
+    except:
+        print ("ERROR: Invalid numbers: %s" % numbers)
+        return
+        
+    R(Key('c-g')).execute()
+    time.sleep(0.5) # Wait for popup
+    
+    for character in numbersStr:
+        R(Key(character)).execute()
+        
+    R(Key('enter')).execute()
+
 class PythonNon(MappingRule):
     mapping = {
         "<codeSnippet>" :
@@ -58,13 +77,106 @@ class PythonNon(MappingRule):
         "comment" : 
             R(Key("c-slash")),
         "big comment" :
-            R(Key("sa-a")),    
+            R(Key("sa-a")),
+        "line <numbers>":
+            R(Function(_goToLine)),
+            
+        "step in":
+            R(Key("f11")),
+        "step out":
+            R(Key("s-f11")),
+        "step over":
+            R(Key("f10")),
+        "debug [continue]":
+            R(Key("f5")),
+        "debug stop":
+            R(Key("s-f5")),
+            
+        "breakpoint":
+            R(Key("f9")),
+            
+        "go definition":
+            R(Key("f12")),
+        "peek definition":
+            R(Key("a-f12")),
+        "side definition":
+            R(Key("c-k") + Pause("20") + Key("f12")),
+            
+        "peek references":
+            R(Key("s-f12")),
+            
+        "show command palette":
+            R(Key("cs-p")),
+            
+        "go bracket":
+            R(Key("cs-backslash")),
+            
+        "fold":
+            R(Key("cs-[")),
+        "unfold":
+            R(Key("cs-]")),
+        "fold all":
+            R(Key("c-k") + Pause("20") + Key("c-0")),
+        "unfold all":
+            R(Key("c-k") + Pause("20") + Key("c-j")),            
+        
+        "next tab [<n>]":
+            R(Key("c-pgdown")) * Repeat(extra="n"),
+        "previous tab [<n>]":
+            R(Key("c-pgup")) * Repeat(extra="n"),
+        # "close tab": Handled by native caster command
+        "split editor":
+            R(Key("c-backslash")),
+        "close editor":
+            R(Key("c-f4")),
+        "next editor [<n>]":
+            R(Key("c-k") + Pause("20") + Key("c-right")) * Repeat(extra="n"),
+        "previous editor [<n>]":
+            R(Key("c-k") + Pause("20") + Key("c-left")) * Repeat(extra="n"),
+        "focus explorer":
+            R(Key("c-0")), # Navigate with up/down/left/right, press enter to open selected file
+        "focus editor":
+            R(Key("c-1")),
+        "[focus] terminal":
+            R(Key("c-backtick")),
+            
+            
+        "search for file":
+            R(Key("c-p")),
+            
+        "go symbol" :
+            R(Key("cs-o") + Pause("20") + Key("colon")),
+            
+        "hover" :
+            R(Key("c-k") + Pause("20") + Key("c-i")),
+        
+        "expand [<n>]":
+            R(Key("sa-right")) * Repeat(extra="n"),
+        "shrink [<n>]":
+            R(Key("sa-left")) * Repeat(extra="n"),
+            
+        "scroll up [<n>]":
+            R(Key("c-up")*Repeat(extra='n')),
+        "scroll down [<n>]":
+            R(Key("c-down")*Repeat(extra='n')),
+        "scroll page up [<n>]":
+            R(Key("a-pgup")*Repeat(extra='n')),
+        "scroll page down [<n>]":
+            R(Key("a-pgdown")*Repeat(extra='n')),
+            
+        "delete line":
+            R(Key("s-del")),
     }
     
     extras = [  
-        Choice("codeSnippet", _getChoiceMap(codeSnippetMap))
+        Choice("codeSnippet", _getChoiceMap(codeSnippetMap)),
+        Dictation("numbers"),
+        IntegerRefST("n", 1, 3000),
     ]
-    defaults = {}
+    
+    defaults = {
+        "n": 1,
+    }
 
 
 def get_rule():
