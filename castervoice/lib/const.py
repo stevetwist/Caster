@@ -47,6 +47,7 @@ COMPANION_STARTER = {
     "Java": ["JavaNon"],
     "Matlab": ["MatlabNon"],
     "Prolog": ["PrologNon"],
+    "Python" : ["PythonNon"],
     "Rust": ["RustNon"],
     "VHDL": ["VHDLnon"],
     "EclipseCCR": ["EclipseRule"],
