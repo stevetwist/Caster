@@ -81,12 +81,12 @@ class PythonNon(MappingRule):
         "line <numbers>":
             R(Function(_goToLine)),
             
-        "step in":
-            R(Key("f11")),
-        "step out":
-            R(Key("s-f11")),
-        "step over":
-            R(Key("f10")),
+        "step in [<n>]":
+            R(Key("f11"))* Repeat(extra="n"),
+        "step out [<n>]":
+            R(Key("s-f11"))* Repeat(extra="n"),
+        "step over [<n>]":
+            R(Key("f10"))* Repeat(extra="n"),
         "debug [continue]":
             R(Key("f5")),
         "debug stop":
