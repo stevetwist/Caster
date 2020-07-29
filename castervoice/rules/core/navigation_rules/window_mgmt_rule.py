@@ -11,9 +11,9 @@ from castervoice.lib.merge.state.short import R
 class WindowManagementRule(MappingRule):
     mapping = {
         'maximize win':
-            R(Function(utilities.maximize_window)),
+            R(Key("w-up")),
         'minimize win':
-            R(Function(utilities.minimize_window)),
+            R(Key("w-down")),
 
         # Workspace management
         "show work [spaces]":

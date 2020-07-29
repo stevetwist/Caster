@@ -1,4 +1,4 @@
-from dragonfly import Function, Repeat, Dictation, Choice, MappingRule
+from dragonfly import Function, Repeat, Dictation, Choice, MappingRule, Pause
 
 from castervoice.lib.actions import Key, Mouse
 from castervoice.lib import navigation, utilities
@@ -80,10 +80,14 @@ class NavigationNon(MappingRule):
             R(Key("w-up")),
         "move window":
             R(Key("a-space, r, a-space, m")),
-        "window left [<n>]":
-            R(Key("w-left"))*Repeat(extra="n"),
-        "window right [<n>]":
-            R(Key("w-right"))*Repeat(extra="n"),
+        "window left":
+            R(Key("w-left") + Pause("20") + Key("escape")),
+        "window right":
+            R(Key("w-right") + Pause("20") + Key("escape")),
+        "send monitor left":
+            R(Key("ws-left")),
+        "send monitor right":
+            R(Key("ws-right")),
         "monitor left [<n>]":
             R(Key("sw-left"))*Repeat(extra="n"),
         "monitor right [<n>]":
