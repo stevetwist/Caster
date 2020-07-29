@@ -68,8 +68,7 @@
 			"\t\t${2}.__init__(self)"
 		],
 		"description" : "derived class"
-	}
-
+	},
 
 	"if" : {
 		"prefix" : "st_cs_if",
@@ -161,6 +160,13 @@
 		"description" : "with <1>:"
 	},
 
+	"pylint" : {
+		"prefix" : "st_cs_pylint",
+		"body" : [
+			"# pylint: disable= ${1:broad-except}"
+		],
+		"description" : "pylint disable"
+	}
 
 	// Place your snippets for python here. Each snippet is defined under a snippet name and has a prefix, body and
 	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:

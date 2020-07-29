@@ -27,6 +27,7 @@ codeSnippetMap = {
     "finally" : "st_cs_finally",
     "with" : "st_cs_with",
     "short with" : "st_cs_short_with",
+    "lint" : "st_cs_pylint"
 }
 
 def _getChoiceMap(mapVariable):
