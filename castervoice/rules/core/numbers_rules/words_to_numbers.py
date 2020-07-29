@@ -23,6 +23,8 @@ def wordsToNumbers(numbers):
 
 def intToNumbers(textnum, numwords={}):
     textnum = textnum.replace('oh', 'zero')
+    if (textnum == 'for'):
+        textnum = 'four'
 
     units = [
         'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight',
