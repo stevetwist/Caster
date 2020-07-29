@@ -129,8 +129,10 @@ class PythonNon(MappingRule):
             R(Key("c-k") + Pause("20") + Key("c-right")) * Repeat(extra="n"),
         "previous editor [<n>]":
             R(Key("c-k") + Pause("20") + Key("c-left")) * Repeat(extra="n"),
-        "focus explorer":
-            R(Key("c-0")), # Navigate with up/down/left/right, press enter to open selected file
+        "(focus|show) explorer":
+            R(Key("cs-e")), # Navigate with up/down/left/right, press enter to open selected file        
+        "hide explorer":
+            R(Key("c-b")),
         "focus editor":
             R(Key("c-1")),
         "[focus] terminal":
