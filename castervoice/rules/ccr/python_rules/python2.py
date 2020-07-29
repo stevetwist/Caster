@@ -150,6 +150,8 @@ class PythonNon(MappingRule):
             
         "hover" :
             R(Key("c-k") + Pause("20") + Key("c-i")),
+        "IntelliSense" :
+            R(Key("c-space")),
         
         "expand [<n>]":
             R(Key("sa-right")) * Repeat(extra="n"),
