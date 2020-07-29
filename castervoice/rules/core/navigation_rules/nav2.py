@@ -91,13 +91,13 @@ class NavigationNon(MappingRule):
         "(next | prior) window":
             R(Key("ca-tab, enter")),
         "switch (window | windows)":
-            R(Key("ca-tab"))*Repeat(extra="n"),
-        "next tab [<n>]":
-            R(Key("c-pgdown"))*Repeat(extra="n"),
-        "prior tab [<n>]":
-            R(Key("c-pgup"))*Repeat(extra="n"),
-        "close tab [<n>]":
-            R(Key("c-w/20"))*Repeat(extra="n"),
+            R(Key("ca-tab")),
+        #"next tab [<n>]":
+        #    R(Key("c-pgdown"))*Repeat(extra="n"),
+        #"prior tab [<n>]":
+        #    R(Key("c-pgup"))*Repeat(extra="n"),
+        #"close tab [<n>]":
+        #    R(Key("c-w/20"))*Repeat(extra="n"),
         #"elite translation <text>":
         #    R(Function(alphabet_support.elite_text)),
     }

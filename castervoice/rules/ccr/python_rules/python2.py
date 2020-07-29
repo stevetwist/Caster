@@ -121,10 +121,11 @@ class PythonNon(MappingRule):
             R(Key("c-k") + Pause("20") + Key("c-j")),            
         
         "next tab [<n>]":
-            R(Key("c-pgdown")) * Repeat(extra="n"),
+            R(Key("c-k") + Pause("20") + Key("c-pgdown")) * Repeat(extra="n"),
         "previous tab [<n>]":
-            R(Key("c-pgup")) * Repeat(extra="n"),
-        # "close tab": Handled by native caster command
+            R(Key("c-k") + Pause("20") + Key("c-pgup")) * Repeat(extra="n"),
+        "close tab [<n>]":
+            R(Key("c-w/20"))*Repeat(extra="n"),
         "split editor":
             R(Key("c-backslash")),
         "close editor":
