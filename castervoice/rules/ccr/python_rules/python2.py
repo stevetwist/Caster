@@ -16,7 +16,7 @@ codeSnippetMap = {
     "function" : "st_cs_function",
     "method" : "st_cs_method",
     "static method" : "st_cs_static_method",
-    "see method" : "st_cs_class_method",
+    "class method" : "st_cs_class_method",
     "if" : "st_cs_if",
     "L if" : "st_cs_elif",
     "else" : "st_cs_else",
