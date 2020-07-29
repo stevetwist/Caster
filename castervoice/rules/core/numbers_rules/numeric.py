@@ -10,19 +10,14 @@ from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
 from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.merge.state.short import R
 
-from word2number import w2n
+from castervoice.rules.core.numbers_rules import words_to_numbers
 
-def _processNumbers(minus, numbers, literal_suffix):    
-    numberWordsStr = str(numbers)
-    numberWordsStr = numberWordsStr.replace('.',' point ')
+def _processNumbers(minus, numbers, literal_suffix):   
+    result = minus
+    result += words_to_numbers.wordsToNumbers(str(numbers))
+    result += literal_suffix
     
-    try:
-        numbersStr = str(w2n.word_to_num(numberWordsStr))
-    except:
-        print ("ERROR: Invalid numbers: %s" % numbers)
-        return
-    
-    Text(minus + numbersStr + literal_suffix).execute()
+    Text(result).execute()
     
     
 class Numbers(MappingRule):

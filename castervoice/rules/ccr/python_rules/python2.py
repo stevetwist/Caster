@@ -7,7 +7,7 @@ from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
 from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.merge.state.short import R
 
-from word2number import w2n
+from castervoice.rules.core.numbers_rules import words_to_numbers
 
 codeSnippetMap = {
     "from" : "st_cs_from",
@@ -56,13 +56,7 @@ def _codeSnippet(codeSnippet):
 
 
 def _goToLine(numbers):
-    numberWordsStr = str(numbers)    
-    try:
-        numbersStr = str(w2n.word_to_num(numberWordsStr))
-    except:
-        print ("ERROR: Invalid numbers: %s" % numbers)
-        return
-        
+    numbersStr = words_to_numbers.wordsToNumbers(str(numbers))    
     R(Key('c-g')).execute()
     time.sleep(0.5) # Wait for popup
     
