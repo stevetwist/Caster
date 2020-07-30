@@ -36,6 +36,7 @@ basicKeywordMap = {
     "raise" : "raise ",
     "return" : "return ",
     "true" : "True",    
+    "to do" : "TODO: "
 }
 
 def _getChoiceMap(mapVariable):
