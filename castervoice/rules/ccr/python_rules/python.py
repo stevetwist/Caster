@@ -10,7 +10,8 @@ from castervoice.lib.actions import Key, Text
 from castervoice.lib.const import CCRType
 from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
 from castervoice.lib.merge.mergerule import MergeRule
-from castervoice.lib.merge.state.short import R
+from castervoice.lib.merge.state.actions import ContextSeeker
+from castervoice.lib.merge.state.short import R, L, S
 
 basicKeywordMap = {
     "bit shift left" : " << ",
@@ -26,11 +27,9 @@ basicKeywordMap = {
     "pie deli" : "del ",
     "false" : "False",
     "global" : "global ",
-    "in" : " in ",
     "import" : "import ",
     "is" : " is ",
     "none" : "None",
-    "not" : "not ",
     "or" : " or ",
     "pass" : "pass ",
     "raise" : "raise ",
@@ -38,6 +37,7 @@ basicKeywordMap = {
     "true" : "True",    
     "to do" : "TODO: "
 }
+
 
 def _getChoiceMap(mapVariable):
     choiceMap = {}
@@ -58,6 +58,16 @@ class Python(MergeRule):
     mapping = { 
         "<basicKeyword>" :
             R(Function(_basicKeyword)),
+        "not" :  
+            R(Text('not '), rspec='python_not'),
+        "in" :
+            ContextSeeker(back=[
+                    L(
+                        S(['...'], Text(" in ")), # Default, does not follow 'not'
+                        S(['python_not'], Key('backspace/10:4') + Text(" not in ")), # When 'in' follows 'not', delete previous 'not ', then insert ' not in '
+                    )
+                ]
+            ),
     }
     extras = [  
         Choice("basicKeyword", _getChoiceMap(basicKeywordMap))
