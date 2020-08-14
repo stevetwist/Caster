@@ -1,138 +1,169 @@
 '''
-Created on Sep 1, 2015
+@author: stevetwist
 
-@author: synkarius
+Note: commands that utilize code snippets are designed for use with VisualStudio
+
 '''
-from dragonfly import Mimic
+from dragonfly import Choice, Function
 
-from castervoice.lib.actions import Text, Key
-from castervoice.rules.ccr.standard import SymbolSpecs
+from castervoice.lib.actions import Key, Text
 from castervoice.lib.const import CCRType
 from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.merge.state.short import R
 
+basicKeywordMap = {
+    "bit shift left" : " << ",
+    "bit shift right" : " >> ",
+    "bitwise and" : " & ",
+    "bitwise or" : " | ",
+    "bitwise complement" : "~",
+    "bitwise (exclusive|ex) or" : " ^ ",
+    
+    "logical and" : " && ",
+    "logical or" : " || ",
+    "not" : "!",
+    
+    # c++ keywords (non-code-snippet. See cpp2.py for code-snippets)    
+    # NOTE: Define variables so they read right-to-left, such as:
+    # "int const pointer const" -> "int const * const " (constant pointer to constant int)
+    # "int reference" -> "int & "
+    # "int double reference" -> "int && "
+    "auto" : "auto ",
+    "bool" : "bool ",
+    "break" : "break;",
+    "car" : "char ",
+    "class" : "class ", # Just enters the word "class", see code-snippets for declare/define class
+    "concept" : "concept ",
+    "const" : "const ",
+    "const eval" : "consteval ",
+    "const expression" : "constexpr ",
+    "const INIT" : "constinit ",
+    "continue" : "continue;",    
+    "default" : "default:",
+    "delete" : "delete ", # Note: if confused with "deli", write this as "sea deli"
+    "dub" : "double ",
+    "explicit" : "explicit ",
+    "export" : "export ",
+    "extern" : "extern ",
+    "false" : "false",
+    "final" : "final ",
+    "float" : "float ",
+    "friend" : "friend ",
+    "import" : "import ",
+    "in line" : "inline ",
+    "INT" : "int ",
+    "long" : "long ",
+    "module" : "module ",
+    "mutable" : "mutable ",
+    "namespace" : "namespace ", # Just enters the word "namespace", see code-snippets for define namespace
+    "new" : "new ",
+    "no except" : "noexcept", # Note: no space, as it is the last part of a function declaration
+    "null pointer" : "nullptr",
+    "operator" : "operator", # Note: no space, as typical usage is "operator==", for example
+    "override" : "override ",
+    "private" : "private", # Note: no space. Can either do "private colon enter" or "private ace", as required
+    "protected" : "protected", # Note: no space. Can either do "protected colon enter" or "protected ace", as required
+    "public" : "public", # Note: no space. Can either do "public colon enter" or "public ace", as required
+    "requires" : "requires ",
+    "return" : "return ",
+    "short return" : "return;",
+    "type short" : "short ",
+    "signed" : "signed ",
+    "static" : "static ",   
+    "this" : "this",
+    "throw" : "throw ",
+    "to do" : "TODO: ",
+    "true" : "true",
+    "type name" : "typename ",
+    "unsigned" : "unsigned ",
+    "using" : "using ",
+    "virtual" : "virtual ",
+    "void" : "void ",
+    "volatile" : "volatile ",
+    
+    # C++ preprocessor
+    "hash include" : "#include ",
+    "hash if" : "#if ",
+    "hash L if" : "#elif ",
+    "hash else" : "#else ",
+    "hash end if" : "#endif ",
+    "hash define" : "#define ",
+    "hash un (deaf|define)" : "#undef ",
+    "hash pragma" : "#pragma ",
+    
+    # c++ helpers
+    "arrow" : "->",
+    "pointer" : "* ",
+    "de reference" : "*",
+    "address" : "&",
+    "reference" : "& ",
+    "double reference" : "&& ",
+    "scope" : "::",
+    "standard" : "std::",
+            
+    # Commands that move the cursor:
+    # "terminate" -> "(end);(newline)"
+    # "align as" : "alignas(%1)",
+    # "align of" : "alignof(%1)",
+    # "declared type" : "decltype(%1)",
+    # "template" : "template<%1>"
+    # "type eye D" : "typeid(%1)"
+    # "defined" : "defined(%1)"
+    # "shared pointer" : "shared_ptr<%1>"
+    #       same for weak_ptr and unique_ptr
+    
+    # Code snippets
+    # "constant cast" : "const_cast<%1>(%2)"
+    # "dynamic_cast", "reinterpret_cast", "static_cast"
+    # "static assert"
+    # for, including "range for"    
+    # "case <%>:"
+    # "catch", "try",
+    # "declare class", "define class"
+    #       same for struct
+    #       same for union
+    #       same for function
+    # "if","elif","else"
+    # while, do while,
+    # switch
+    # "declare namespace"
+    # "declare enum class", "define enum class", "declare enum class with type", "define enum class with type"    
+        # "e num" (gives an enum class) -> places cursor ready for name. "with type" also has ": <type>"
+        # declare vs define change if it's ";" or "{\n}"
+    # lambda
+    
+    # VS helpers:    
+    # As many as we can from python, including comment, big comment, and so on.
+}
 
-class CPP(MergeRule):
+
+def _getChoiceMap(mapVariable):
+    choiceMap = {}
+    for key in mapVariable:
+        choiceMap[key] = key
+        
+    return choiceMap
+
+
+def _basicKeyword(basicKeyword):
+    text = basicKeywordMap[basicKeyword]
+    R(Text(text)).execute()
+    
+
+
+class Cpp(MergeRule):
     pronunciation = "C plus plus"
-
-    mapping = {
-        SymbolSpecs.IF:
-            R(Key("i, f, lparen, rparen, leftbrace, enter,up,left")),
-        SymbolSpecs.ELSE:
-            R(Key("e, l, s, e, leftbrace, enter")),
-        #
-        SymbolSpecs.SWITCH:
-            R(Text("switch(){\ncase : break;\ndefault: break;") + Key("up,up,left,left")),
-        SymbolSpecs.CASE:
-            R(Text("case :") + Key("left")),
-        SymbolSpecs.BREAK:
-            R(Text("break;")),
-        SymbolSpecs.DEFAULT:
-            R(Text("default: ")),
-        #
-        SymbolSpecs.DO_LOOP:
-            R(Text("do {}") + Key("left, enter:2")),
-        SymbolSpecs.WHILE_LOOP:
-            R(Text("while ()") + Key("left")),
-        SymbolSpecs.FOR_LOOP:
-            R(Text("for (int i=0; i<TOKEN; i++)")),
-        SymbolSpecs.FOR_EACH_LOOP:
-            R(Text("for_each (TOKEN, TOKEN, TOKEN);")),
-        #
-        SymbolSpecs.TO_INTEGER:
-            R(Text("(int)")),
-        SymbolSpecs.TO_FLOAT:
-            R(Text("(double)")),
-        SymbolSpecs.TO_STRING:
-            R(Text("std::to_string()") + Key("left")),
-        #
-        SymbolSpecs.AND:
-            R(Text("&&")),
-        SymbolSpecs.OR:
-            R(Text("||")),
-        SymbolSpecs.NOT:
-            R(Text("!")),
-        #
-        SymbolSpecs.SYSOUT:
-            R(Text("cout <<")),
-        #
-        SymbolSpecs.IMPORT:
-            R(Text("#include")),
-        #
-        SymbolSpecs.FUNCTION:
-            R(Text("TOKEN TOKEN(){}") + Key("left")),
-        SymbolSpecs.CLASS:
-            R(Text("class TOKEN{}") + Key("left")),
-        #
-        SymbolSpecs.COMMENT:
-            R(Text("//")),
-        SymbolSpecs.LONG_COMMENT:
-            R(Text("/**/") + Key("left, left")),
-        #
-        SymbolSpecs.NULL:
-            R(Text("null")),
-        #
-        SymbolSpecs.RETURN:
-            R(Text("return")),
-        #
-        SymbolSpecs.TRUE:
-            R(Text("true")),
-        SymbolSpecs.FALSE:
-            R(Text("false")),
-
-        # C++ specific
-        "public":
-            R(Text("public ")),
-        "private":
-            R(Text("private ")),
-        "static":
-            R(Text("static ")),
-        "final":
-            R(Text("final ")),
-        "static cast integer":
-            R(Text("static_cast<int>()") + Key("left")),
-        "static cast double":
-            R(Text("static_cast<double>()") + Key("left")),
-        "([global] scope | name)":
-            R(Text("::")),
-        "Vic":
-            R(Text("vector")),
-        "pushback":
-            R(Text("push_back")),
-        "standard":
-            R(Text("std")),
-        "constant":
-            R(Text("const")),
-        "array":
-            R(Mimic("brackets")),
-
-        #http://www.learncpp.com/cpp-tutorial/67-introduction-to-pointers/
-        "(reference to | address of)":
-            R(Text("&")),
-        "(pointer | D reference)":
-            R(Text("*")),
-        "member":
-            R(Text("->")),
-        "new new":
-            R(Text("new ")),
-        "integer":
-            R(Text("int ")),
-        "double":
-            R(Text("double ")),
-        "character":
-            R(Text("char ")),
-        "big integer":
-            R(Text("Integer")),
-        "string":
-            R(Text("string ")),
-        "ternary":
-            R(Text("()?;") + (Key("left")*3)),
+    
+    mapping = { 
+        "<basicKeyword>" :
+            R(Function(_basicKeyword))
     }
-
-    extras = []
+    extras = [  
+        Choice("basicKeyword", _getChoiceMap(basicKeywordMap))
+    ]
     defaults = {}
 
 
 def get_rule():
-    return CPP, RuleDetails(ccrtype=CCRType.GLOBAL)
+    return Cpp, RuleDetails(ccrtype=CCRType.GLOBAL)

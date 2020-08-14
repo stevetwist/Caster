@@ -44,6 +44,7 @@ INTERNAL = [
 # default companion rules
 COMPANION_STARTER = {
     "Navigation": ["NavigationNon"],
+    "Cpp" : ["CppNon"],
     "Java": ["JavaNon"],
     "Matlab": ["MatlabNon"],
     "Prolog": ["PrologNon"],
