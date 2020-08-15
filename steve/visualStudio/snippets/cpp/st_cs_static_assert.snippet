@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>stcsstaticassert</Title>
+			<Shortcut>stcsstaticassert</Shortcut>
+			<Description>Code snippet for static assert</Description>
+			<Author>Steve Twist</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>expression</ID>
+					<ToolTip>Expression to evaluate</ToolTip>
+					<Default>true</Default>
+				</Literal>
+                <Literal>
+					<ID>message</ID>
+					<ToolTip>compiler error if expression is false</ToolTip>
+					<Default>error message</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="cpp"><![CDATA[static_assert($expression$, "$message$");]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

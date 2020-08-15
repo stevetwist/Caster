@@ -101,40 +101,7 @@ basicKeywordMap = {
     "double reference" : "&& ",
     "scope" : "::",
     "standard" : "std::",
-            
-    # Commands that move the cursor:
-    # "terminate" -> "(end);(newline)"
-    # "align as" : "alignas(%1)",
-    # "align of" : "alignof(%1)",
-    # "declared type" : "decltype(%1)",
-    # "template" : "template<%1>"
-    # "type eye D" : "typeid(%1)"
-    # "defined" : "defined(%1)"
-    # "shared pointer" : "shared_ptr<%1>"
-    #       same for weak_ptr and unique_ptr
     
-    # Code snippets
-    # "constant cast" : "const_cast<%1>(%2)"
-    # "dynamic_cast", "reinterpret_cast", "static_cast"
-    # "static assert"
-    # for, including "range for"    
-    # "case <%>:"
-    # "catch", "try",
-    # "declare class", "define class"
-    #       same for struct
-    #       same for union
-    #       same for function
-    # "if","elif","else"
-    # while, do while,
-    # switch
-    # "declare namespace"
-    # "declare enum class", "define enum class", "declare enum class with type", "define enum class with type"    
-        # "e num" (gives an enum class) -> places cursor ready for name. "with type" also has ": <type>"
-        # declare vs define change if it's ";" or "{\n}"
-    # lambda
-    
-    # VS helpers:    
-    # As many as we can from python, including comment, big comment, and so on.
 }
 
 
@@ -157,7 +124,39 @@ class Cpp(MergeRule):
     
     mapping = { 
         "<basicKeyword>" :
-            R(Function(_basicKeyword))
+            R(Function(_basicKeyword)),
+        
+        "align as" :
+            R(Text("alignas()") + Key("left")),
+    
+        "align of" :
+            R(Text("alignof()") + Key("left")),
+
+        "case" :
+            R(Text("case :") + Key("left")),
+        
+        "declared type" :
+            R(Text("decltype()") + Key("left")),
+    
+        "defined" :
+            R(Text("defined()") + Key("left")),
+        
+        "template" :
+            R(Text("template<>") + Key("left")),
+            
+        "terminate" :
+            R(Key("end, semicolon, enter")),
+            
+        "type eye D" :
+            R(Text("typeid()") + Key("left")),
+            
+        "shared pointer" :
+            R(Text("shared_ptr<>") + Key("left")),
+        "unique pointer" :
+            R(Text("unique_ptr<>") + Key("left")),
+        "weak pointer" :
+            R(Text("weak_ptr<>") + Key("left")),
+    
     }
     extras = [  
         Choice("basicKeyword", _getChoiceMap(basicKeywordMap))

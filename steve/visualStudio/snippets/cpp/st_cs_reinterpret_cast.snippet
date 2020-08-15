@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>stcsreinterpretcast</Title>
+			<Shortcut>stcsreinterpretcast</Shortcut>
+			<Description>Code snippet for reinterpret cast</Description>
+			<Author>Steve Twist</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+                <Literal>
+					<ID>type</ID>
+					<ToolTip>Type to cast to</ToolTip>
+					<Default>void</Default>
+				</Literal>
+				<Literal>
+					<ID>expression</ID>
+					<ToolTip>Expression to evaluate</ToolTip>
+					<Default>nullptr</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="cpp"><![CDATA[reinterpret_cast<$type$>($expression$)]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

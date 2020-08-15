@@ -9,25 +9,38 @@ from castervoice.lib.merge.state.short import R
 
 from castervoice.rules.core.numbers_rules import words_to_numbers
 
+# Code snippets
+
+# "declare class", "define class"
+#       same for struct
+#       same for union
+#       same for function
+
+# "declare namespace"
+# "declare enum class", "define enum class", "declare enum class with type", "define enum class with type"    
+    # "e num" (gives an enum class) -> places cursor ready for name. "with type" also has ": <type>"
+    # declare vs define change if it's ";" or "{\n}"
+# lambda
+
+# VS helpers:    
+# As many as we can from python, including comment, big comment, and so on.
+
+
 codeSnippetMap = {
-    #"from" : "st_cs_from",
-    #"class" : "st_cs_class",
-    #"derived class" : "st_cs_derived_class",
-    #"function" : "st_cs_function",
-    #"method" : "st_cs_method",
-    #"static method" : "st_cs_static_method",
-    #"class method" : "st_cs_class_method",
-    "if" : "st_cs_if",
-    #"L if" : "st_cs_elif",
-    #"else" : "st_cs_else",
-    #"for" : "st_cs_for",
-    #"while" : "st_cs_while",
-    #"try" : "st_cs_try",
-    #"except" : "st_cs_except",    
-    #"finally" : "st_cs_finally",
-    #"with" : "st_cs_with",
-    #"short with" : "st_cs_short_with",
-    #"lint" : "st_cs_pylint"
+    "if" : "stcsif",    
+    "else" : "stcselse",
+    "switch" : "stcsswitch",
+    "do while" : "stcsdo",
+    "while" : "stcswhile",
+    "for" : "stcsfor",    
+    "range for" : "stcsrfor",    
+    "try" : "stcstry",
+    "catch" : "stcscatch",
+    "const cast" : "stcsconstcast",
+    "dynamic cast" : "stcsdynamiccast",
+    "reinterpret cast" : "stcsreinterpretcast",
+    "static cast" : "stcsstaticcast",
+    "static assert" : "stcsstaticassert",
 }
 
 def _getChoiceMap(mapVariable):
@@ -65,10 +78,19 @@ def _goToLine(numbers):
         
     R(Key('enter')).execute()
 
+
+def _elseIf():
+    R(Text("else ")).execute()
+    _codeSnippet("if")
+    
+
 class CppNon(MappingRule):
     mapping = {
         "<codeSnippet>" :
             R(Function(_codeSnippet)),
+        "L if" : 
+            R(Function(_elseIf)),
+            
         #"comment" : 
         #    R(Key("c-slash")),
         #"big comment" :

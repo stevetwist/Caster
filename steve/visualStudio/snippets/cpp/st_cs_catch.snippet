@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>stcscatch</Title>
+			<Shortcut>stcscatch</Shortcut>
+			<Description>Code snippet for catch</Description>
+			<Author>Steve Twist</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>				
+			</SnippetTypes>
+		</Header>
+        
+		<Snippet>
+            <Declarations>
+				<Literal>
+					<ID>exception</ID>
+					<ToolTip>Exception</ToolTip>
+					<Default><![CDATA[const std::exception&]]></Default>
+				</Literal>
+			</Declarations>
+			<Code Language="cpp"><![CDATA[catch ($exception$) {
+		$end$
+	}]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
