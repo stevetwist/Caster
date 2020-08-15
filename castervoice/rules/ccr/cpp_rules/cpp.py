@@ -38,7 +38,7 @@ basicKeywordMap = {
     "const" : "const ",
     "const eval" : "consteval ",
     "const expression" : "constexpr ",
-    "const INIT" : "constinit ",
+    "const in it" : "constinit ",
     "continue" : "continue;",    
     "default" : "default:",
     "delete" : "delete ", # Note: if confused with "deli", write this as "sea deli"
@@ -53,7 +53,7 @@ basicKeywordMap = {
     "friend" : "friend ",
     "import" : "import ",
     "in line" : "inline ",
-    "INT" : "int ",
+    "int" : "int ",
     "long" : "long ",
     "module" : "module ",
     "mutable" : "mutable ",
@@ -91,7 +91,7 @@ basicKeywordMap = {
     "hash else" : "#else ",
     "hash end if" : "#endif ",
     "hash define" : "#define ",
-    "hash un (deaf|define)" : "#undef ",
+    "hash un define" : "#undef ",
     "hash pragma" : "#pragma ",
     
     # c++ helpers
