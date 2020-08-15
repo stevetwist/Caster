@@ -43,7 +43,7 @@ basicKeywordMap = {
     "default" : "default:",
     "delete" : "delete ", # Note: if confused with "deli", write this as "sea deli"
     "dub" : "double ",
-    "E num" : "enum ", # Just enters the word "enum", see code-snippets for "define enum class"
+    "E num" : "enum ", # Just enters the word "enum",  No namespace code-snippet, easier to dictate as-is
     "explicit" : "explicit ",
     "export" : "export ",
     "extern" : "extern ",
@@ -57,7 +57,7 @@ basicKeywordMap = {
     "long" : "long ",
     "module" : "module ",
     "mutable" : "mutable ",
-    "namespace" : "namespace ", # Just enters the word "namespace", see code-snippets for define namespace
+    "namespace" : "namespace ", # Just enters the word "namespace", No namespace code-snippet, easier to dictate as-is
     "new" : "new ",
     "no except" : "noexcept", # Note: no space, as it is the last part of a function declaration
     "null pointer" : "nullptr",
@@ -72,7 +72,7 @@ basicKeywordMap = {
     "type short" : "short ",
     "signed" : "signed ",
     "static" : "static ",   
-    "struct" : "struct ", # Just enters the word "struct", see code-snippets for "define struct"
+    "struct" : "struct ", # Just enters the word "struct",  No namespace code-snippet, easier to dictate as-is
     "this" : "this",
     "throw" : "throw ",
     "to do" : "TODO: ",

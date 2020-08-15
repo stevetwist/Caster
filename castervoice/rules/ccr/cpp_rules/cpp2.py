@@ -9,19 +9,6 @@ from castervoice.lib.merge.state.short import R
 
 from castervoice.rules.core.numbers_rules import words_to_numbers
 
-# Code snippets
-
-# "declare class", "define class"
-#       same for struct
-#       same for union
-#       same for function
-
-# "declare namespace"
-# "declare enum class", "define enum class", "declare enum class with type", "define enum class with type"    
-    # "e num" (gives an enum class) -> places cursor ready for name. "with type" also has ": <type>"
-    # declare vs define change if it's ";" or "{\n}"
-# lambda
-
 # VS helpers:    
 # As many as we can from python, including comment, big comment, and so on.
 
