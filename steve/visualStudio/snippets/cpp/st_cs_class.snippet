@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>stcsclass</Title>
+			<Shortcut>stcsclass</Shortcut>
+			<Description>Code snippet for class definition</Description>
+			<Author>Steve Twist</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>				
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>Class name</ToolTip>
+                    <Default>MyClass</Default>
+                </Literal>
+            </Declarations>
+        
+			<Code Language="cpp"><![CDATA[class $name$ {
+public:
+    $name$() = default;    
+    ~$name$() = default;    
+    $name$($name$ const & other) = default;    
+    $name$($name$ && other) = default;    
+    $name$ & operator=($name$ const & rhs) = default;    
+    $name$ & operator=($name$ && rhs) = default;    
+}]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

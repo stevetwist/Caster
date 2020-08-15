@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>stcsclassderived</Title>
+			<Shortcut>stcsclassderived</Shortcut>
+			<Description>Code snippet for derived class definition</Description>
+			<Author>Steve Twist</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>				
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>Class name</ToolTip>
+                    <Default>MyClass</Default>
+                </Literal>
+                
+                <Literal>
+                    <ID>base</ID>
+                    <ToolTip>Base name</ToolTip>
+                    <Default>BaseClass</Default>
+                </Literal>
+                
+                <Literal>
+                    <ID>access</ID>
+                    <ToolTip>Access modifier</ToolTip>
+                    <Default>public</Default>
+                </Literal>
+            </Declarations>
+			<Code Language="cpp"><![CDATA[class $name$ : $access$ $base$ {
+public:
+    $name$() = default;    
+    ~$name$() = default;    
+    $name$($name$ const & other) = default;    
+    $name$($name$ && other) = default;    
+    $name$ & operator=($name$ const & rhs) = default;    
+    $name$ & operator=($name$ && rhs) = default;    
+}]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

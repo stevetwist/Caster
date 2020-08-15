@@ -33,7 +33,7 @@ basicKeywordMap = {
     "bool" : "bool ",
     "break" : "break;",
     "car" : "char ",
-    "class" : "class ", # Just enters the word "class", see code-snippets for declare/define class
+    "class" : "class ", # Just enters the word "class", see code-snippets for "define class"
     "concept" : "concept ",
     "const" : "const ",
     "const eval" : "consteval ",
@@ -43,6 +43,7 @@ basicKeywordMap = {
     "default" : "default:",
     "delete" : "delete ", # Note: if confused with "deli", write this as "sea deli"
     "dub" : "double ",
+    "E num" : "enum ", # Just enters the word "enum", see code-snippets for "define enum class"
     "explicit" : "explicit ",
     "export" : "export ",
     "extern" : "extern ",
@@ -71,6 +72,7 @@ basicKeywordMap = {
     "type short" : "short ",
     "signed" : "signed ",
     "static" : "static ",   
+    "struct" : "struct ", # Just enters the word "struct", see code-snippets for "define struct"
     "this" : "this",
     "throw" : "throw ",
     "to do" : "TODO: ",

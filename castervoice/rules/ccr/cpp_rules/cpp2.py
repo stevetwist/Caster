@@ -41,6 +41,8 @@ codeSnippetMap = {
     "reinterpret cast" : "stcsreinterpretcast",
     "static cast" : "stcsstaticcast",
     "static assert" : "stcsstaticassert",
+    "define class" : "stcsclass",
+    "define derived class" : "stcsclassderived",
 }
 
 def _getChoiceMap(mapVariable):
