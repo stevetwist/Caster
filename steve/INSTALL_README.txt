@@ -6,4 +6,7 @@ Import Visual Studio code snippets from C:\Caster\steve\visualStudio\snippets
         Language: Visual C++
         Import...
 
+Import Visual Studio hotkeys from C:\Caster\steve\visualStudio\hotkeys\
+    (See README.txt in that folder)
+
 After first run of Caster, copy rules.toml to C:\Users\<username>\AppData\Local\caster\settings\rules.toml

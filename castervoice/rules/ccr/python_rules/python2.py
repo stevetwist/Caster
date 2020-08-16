@@ -69,8 +69,10 @@ class PythonNon(MappingRule):
     mapping = {
         "<codeSnippet>" :
             R(Function(_codeSnippet)),
-        "comment" : 
+        "toggle comment" : 
             R(Key("c-slash")),
+        "comment" : 
+            R(Text("# ")),
         "big comment" :
             R(Key("sa-a")),
         "line <numbers>":

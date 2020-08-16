@@ -9,8 +9,13 @@ from castervoice.lib.merge.state.short import R
 
 from castervoice.rules.core.numbers_rules import words_to_numbers
 
-# VS helpers:    
-# As many as we can from python, including comment, big comment, and so on.
+# NOTE: Visual Studio hotkeys based on configuring Visual Studio for the C++ environment
+# Some changes were made:
+#   Assign Shift+Alt+a to "Project.NewFolder" in Global
+#   Assign Shift+F12 to "Edit.FindAllReferences" in Global
+#   Assign Ctrl+Shift+Alt+F8 to "Build.RunCodeAnalysisonProject" in Global
+#   Assign Ctrl+Shift+Alt+F9 to "Build.SolutionConfigurations" in Global
+#   Assign Ctrl+Shift+Alt+F10 to "Build.SolutionPlatforms" in Global
 
 
 codeSnippetMap = {
@@ -68,6 +73,22 @@ def _goToLine(numbers):
     R(Key('enter')).execute()
 
 
+def _configuartion(n):
+    R(Key("cas-f9") + Pause("20")).execute()
+    R(Key("home")).execute()
+    for i in range(n-1):
+        R(Key("down")).execute()
+    R(Key("enter")).execute()
+
+
+def _platform(n):
+    R(Key("cas-f10") + Pause("20")).execute()
+    R(Key("home")).execute()
+    for i in range(n-1):
+        R(Key("down")).execute()
+    R(Key("enter")).execute()
+
+
 def _elseIf():
     R(Text("else ")).execute()
     _codeSnippet("if")
@@ -80,103 +101,151 @@ class CppNon(MappingRule):
         "L if" : 
             R(Function(_elseIf)),
             
-        #"comment" : 
-        #    R(Key("c-slash")),
-        #"big comment" :
-        #    R(Key("sa-a")),
-        #"line <numbers>":
-        #    R(Function(_goToLine)),
+        "toggle comment" :
+            R(Key("c-k") + Pause("20") + Key("c-slash")),        
+        "comment" :
+            R(Text("// ")),
+        "big comment" :
+            R(Text("/*\n/*")),
             
-        #"step in [<n>]":
-        #    R(Key("f11"))* Repeat(extra="n"),
-        #"step out [<n>]":
-        #    R(Key("s-f11"))* Repeat(extra="n"),
-        #"step over [<n>]":
-        #    R(Key("f10"))* Repeat(extra="n"),
-        #"debug [continue]":
-        #    R(Key("f5")),
-        #"debug stop":
-        #    R(Key("s-f5")),
+        "line <numbers>":
+            R(Function(_goToLine)),
             
-        #"breakpoint":
-        #    R(Key("f9")),
+        "analyze file":
+            R(Key("csa-f7")),
+        "analyze project":
+            R(Key("csa-f8")),
+        "analyze solution":
+            R(Key("a-f11")),
             
-        #"go definition":
-        #    R(Key("f12")),
-        #"peek definition":
-        #    R(Key("a-f12")),
-        #"side definition":
-        #    R(Key("c-k") + Pause("20") + Key("f12")),
+        "format": # Apply formatting to document
+            R(Key("c-k") + Pause("20") + Key("c-d")), 
             
-        #"peek references":
-        #    R(Key("s-f12")),
+        "next issue":
+            R(Key("a-pgdown")),
+        "previous issue":
+            R(Key("a-pgup")),
             
-        #"show command palette":
-        #    R(Key("cs-p")),
+        "step in [<n>]":
+            R(Key("f11"))* Repeat(extra="n"),
+        "step out [<n>]":
+            R(Key("s-f11"))* Repeat(extra="n"),
+        "step over [<n>]":
+            R(Key("f10"))* Repeat(extra="n"),
+        "debug [continue]":
+            R(Key("f5")),
+        "run":
+            R(Key("c-f5")),
+        "debug stop":
+            R(Key("s-f5")),
             
-        #"go bracket":
-        #    R(Key("cs-backslash")),
+        "build": # Build project
+            R(Key("c-b")),            
+        "build solution":
+            R(Key("f7")),
             
-        #"fold":
-        #    R(Key("cs-[")),
-        #"unfold":
-        #    R(Key("cs-]")),
-        #"fold all":
-        #    R(Key("c-k") + Pause("20") + Key("c-0")),
-        #"unfold all":
-        #    R(Key("c-k") + Pause("20") + Key("c-j")),            
+        "breakpoint":
+            R(Key("f9")),
+                        
+        "bookmark": # Toggle bookmark on current line
+            R(Key("c-k") + Pause("20") + Key("c-k")), 
+        "next bookmark [<n>]":
+            R(Key("f2"))* Repeat(extra="n"),
+        "previous bookmark [<n>]":
+            R(Key("s-f2"))* Repeat(extra="n"),
+            
+        "go definition":
+            R(Key("f12")),
+        "peek definition":
+            R(Key("a-f12")),
+        "find references":
+            R(Key("s-f12")),
         
-        #"next tab [<n>]":
-        #    R(Key("c-k") + Pause("20") + Key("c-pgdown")) * Repeat(extra="n"),
-        #"previous tab [<n>]":
-        #    R(Key("c-k") + Pause("20") + Key("c-pgup")) * Repeat(extra="n"),
-        #"close tab [<n>]":
-        #    R(Key("c-w/20"))*Repeat(extra="n"),
-        #"split editor":
-        #    R(Key("c-backslash")),
-        #"close editor":
-        #    R(Key("c-f4")),
-        #"next editor [<n>]":
-        #    R(Key("c-k") + Pause("20") + Key("c-right")) * Repeat(extra="n"),
-        #"previous editor [<n>]":
-        #    R(Key("c-k") + Pause("20") + Key("c-left")) * Repeat(extra="n"),
-        #"(focus|show) explorer":
-        #    R(Key("cs-e")), # Navigate with up/down/left/right, press enter to open selected file        
-        #"hide explorer":
-        #    R(Key("c-b")),
-        #"focus editor":
-        #    R(Key("c-1")),
-        #"[focus] terminal":
-        #    R(Key("c-backtick")),
+        "quick actions": # Use this to create definition, copy signature, move definition (toggle between header/source) and so on
+            R(Key("c-.")),
+    
+        "go bracket": # Only works if bracket currently under cursor
+            R(Key("c-]")),
+        "select bracket": # Only works if bracket currently under cursor
+            R(Key("cs-]")),
             
-            
-        #"search for file":
-        #    R(Key("c-p")),
-            
-        #"go symbol" :
-        #    R(Key("cs-o") + Pause("20") + Key("colon")),
-            
-        #"hover" :
-        #    R(Key("c-k") + Pause("20") + Key("c-i")),
-        #"IntelliSense" :
-        #    R(Key("c-space")),
+        "fold all":
+            R(Key("c-m") + Pause("20") + Key("c-a")),
+        "fold to definitions":
+            R(Key("c-m") + Pause("20") + Key("c-o")),
+        "[toggle] (fold|unfold)":
+            R(Key("c-m") + Pause("20") + Key("c-m")),        
+        "unfold all":
+            R(Key("c-m") + Pause("20") + Key("c-l")),          
         
-        #"expand [<n>]":
-        #    R(Key("sa-right")) * Repeat(extra="n"),
-        #"shrink [<n>]":
-        #    R(Key("sa-left")) * Repeat(extra="n"),
+        "next tab [<n>]":
+            R(Key("ca-pgdown/20"))*Repeat(extra="n"),
+        "previous tab [<n>]":
+            R(Key("ca-pgup/20"))*Repeat(extra="n"),
+        "close tab [<n>]":
+            R(Key("c-f4/20"))*Repeat(extra="n"),
+        "keep tab":
+            R(Key("ca-home")),
+        
+        "(focus|show) explorer":
+            R(Key("ca-l")), # Navigate with up/down/left/right, press enter to open selected file        
+        "add new folder":
+            R(Key("sa-a")),
+        "add new header":
+            R(Key("cs-a") + Pause("20") + Key("c-e") + Pause("20") + Text("Header File (.h)") + Pause("200") + Key("tab/20:2") + Pause("20") + Key("home,c-delete")),            
+        "add new source file":
+            R(Key("cs-a") + Pause("20") + Key("c-e") + Pause("20") + Text("C++ File (.cpp)") + Pause("200") + Key("tab/20:2") + Pause("20") + Key("home,c-delete")),
+        # TODO: Can add any "add new..." command, such as "Add new compute shader"
+        #       Will also need to figure out configuring said shader to compile correctly, ideally via Visual Studio
             
-        #"scroll up [<n>]":
-        #    R(Key("c-up")*Repeat(extra='n')),
-        #"scroll down [<n>]":
-        #    R(Key("c-down")*Repeat(extra='n')),
-        #"scroll page up [<n>]":
-        #    R(Key("a-pgup")*Repeat(extra='n')),
-        #"scroll page down [<n>]":
-        #    R(Key("a-pgdown")*Repeat(extra='n')),
+
+        "(focus|show) class view": # Note: if you "copy" on an entry, it copies the fully qualified name to the clipboard. Cannot paste via caster, must say "press ctrl v"
+            R(Key("cs-c")),
+        "(focus|show) output":
+            R(Key("a-2")),
+        "(focus|show) error list": # Can navigate with up/down, then press enter to go to selected error
+            R(Key("c-backslash") + Pause("20") + Key("e")),
+        "(focus|show) test explorer":
+            R(Key("c-e") + Pause("20") + Key("t")),
+        
+        "(focus|show) bookmarks":
+            R(Key("c-k") + Pause("20") + Key("c-w")), 
+               
+        "(show|view) call hierarchy":
+            R(Key("c-k") + Pause("20") + Key("c-t")), 
+                              
+        "search explorer":
+            R(Key("c-;")),
             
-        #"delete line":
-        #    R(Key("s-del")),
+        "go file":
+            R(Key("cs-t")),
+        "go type":
+            R(Key("c-1") + Pause("20") + Key("c-t")),
+        "go member":
+            R(Key("a-backslash")),
+        "go symbol":
+            R(Key("c-1") + Pause("20") + Key("c-s")),
+            
+        "hover" :
+            R(Key("c-k") + Pause("20") + Key("c-i")),
+        
+        "expand [<n>]":
+            R(Key("sa-equals")) * Repeat(extra="n"),
+        "shrink [<n>]":
+            R(Key("sa-minus")) * Repeat(extra="n"),
+            
+        "scroll up [<n>]":
+            R(Key("c-up")*Repeat(extra='n')),
+        "scroll down [<n>]":
+            R(Key("c-down")*Repeat(extra='n')),
+            
+        "delete line":
+            R(Key("s-del")),
+            
+        "configuration <n>":
+            R(Function(_configuartion)),     
+        "platform <n>":
+            R(Function(_platform)),
     }
     
     extras = [  
