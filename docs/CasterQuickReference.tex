@@ -325,6 +325,7 @@ Must pause after issuing command. This is not a CCR/merge command.
 	break \\
 	class \\
 	class method\\
+	toggle comment \\
 	comment \\
 	big comment \\
 	continue \\
@@ -411,70 +412,152 @@ Must pause after issuing command. This is not a CCR/merge command.
 \put(105,200){ % Divide the page
 	\begin{minipage}[t]{85mm} % Create a box to house text
 	
+	%----------------------------------------------------------------------------------------
+	
 	\sectiontitle{C++ (Visual Studio)}
-		
+	
 	\command{enable C plus plus}{activate module}
 	
 	\begin{multicols}{2}
-	
-	TODO: List C++ commands
+		
+		bit shift (left|right) \\
+		\command{bitwise and}{\texttt{\&}}
+		\command{bitwise complement}{\texttt{\~}}
+		\command{logical or}{\texttt{||}}
+		
+		\columnbreak
+		\command{not}{\texttt{!}}
+		\command{bitwise or}{\texttt{|}}
+		\command{bitwise xor}{\texttt{\^}}
+		\command{logical and}{\texttt{\&\&}}
 	
 	\end{multicols}
 	
+	\begin{multicols}{4}
+	auto \\ bool \\ break \\ catch \\ class \\
+	concept \\ const \\ const cast \\ continue \\ default \\ delete \\ do while \\ elif \\
+	else \\ enum \\ explicit \\ export \\ extern \\ false \\ final \\
+	float \\ for \\ range for \\ friend \\ if \\ import \\ inline \\ int \\ long \\ module \\
+	mutable \\ namespace \\ new \\ noexcept \\ operator \\ override \\ 
+	private \\ protected \\ public \\ requires \\ signed \\ static \\ static cast \\
+	struct \\ switch \\ this \\ throw \\ todo \\ true \\ try \\ typename \\ unsigned \\
+	using \\ virtual \\ void \\ volatile \\ while \\ 
 	
-	TODO: List Visual Studio Helper Functions
+	\end{multicols}
+
+	\begin{multicols}{2}
+	static assert \\ define [derived] class \\
 	
+	\columnbreak
+	reinterpret cast \\ dynamic cast \\
+	
+	\end{multicols}
+
+
+
 	%----------------------------------------------------------------------------------------
+	
+	
+	\begin{multicols}{2}
+	
+	terminate \\
+	toggle comment \\
+	{[big] comment} \\
+	delete line \\
+	hover \\	
+	expand \footnotemark[1] \\
+	shrink \footnotemark[1] \\
+	go bracket \\
+	select bracket \\	
+	{[un]fold all} \\
+	{[toggle] [un]fold} \\
+	fold to definitions \\
+	scroll (up|down) \footnotemark[1]\\
+	line <n> \\
+	
+	
+	\columnbreak
+	(go|peek) definition \\
+	find references \\	
+	quick actions \\
+	go (file|type) \\
+	go (member|symbol) \\	
+	(next|previous) issue \\
+	(next|previous) tab \footnotemark[1] \\
+	close tab \footnotemark[1] \\		
+	keep tab \\
+	search explorer \\
+	add new folder \\
+	add new header \\
+	add new source file \\	
+		
+	\end{multicols}
+	
+	\footnotetext[1]{Takes optional number parameter for repetition}
 	
 	\end{minipage}
 }
 
 \put(200, 200){
 	\begin{minipage}[t]{85mm}
+	
 	%----------------------------------------------------------------------------------------
 	
+	\command{arrow}{\texttt{->}}
+	\command{pointer | de-reference}{\texttt{*}}
+	\command{address | reference}{\texttt{\&}}
+	\command{double reference}{\texttt{\&\&}}
+	\command{scope}{\texttt{::}}
+	\command{align as}{\texttt{alignas()}}
+	\command{align of}{\texttt{alignof()}}
+	\command{case}{\texttt{case:}}
+	\command{car}{\texttt{char}}
+	\command{const eval}{\texttt{consteval}}
+	\command{const expression}{\texttt{constexpr}}
+	\command{const init}{\texttt{constinit}}
+	\command{declared type}{\texttt{decltype()}}
+	\command{defined}{\texttt{defined()}}	
+	\command{dub}{\texttt{double}}
+	\command{return}{\texttt{return\_}}
+	\command{short return}{\texttt{return;}}
+	\command{null pointer}{\texttt{nullptr}}
+	\command{type short}{\texttt{short}}	
+	\command{standard}{\texttt{std::}}
+	\command{template}{\texttt{template<>}}
+	\command{type ID}{\texttt{typeid()}}
+	\command{shared pointer}{\texttt{shared\_ptr<>}}
+	\command{unique pointer}{\texttt{unique\_ptr<>}}
+	\command{weak pointer}{\texttt{weak\_ptr<>}}	
+	\command{hash (include|if|elif|else|endif|define|pragma)}{\texttt{\#(opt.)}}
+	\command{hash un-define}{\texttt{\#undef}}
+
+	(focus|show) (bookmarks | call hierarchy | class view | error list | explorer | output | test explorer )
+		
+	\begin{multicols}{2}
+
+	configuration <n> \\
+	platform <n> \\
+	format \\	
+	bookmark \\
+	next bookmark \footnotemark[1] \\
+	previous bookmark \footnotemark[1] \\
+	analyize (file|project|solution) \\
 	
-	\sectiontitle{Mouse Replacement}
+	\columnbreak
+	build [solution]\\		
+	(run | debug) \\
+	debug continue \\
+	debug stop \\	
+	breakpoint \\
+	step (in|out|over) \footnotemark[1] \\
 	
-	\command{kick}{left click}
-	\command{kick mid}{middle click}
-	\command{psychic}{right click}
-	\command{shift right click}{shift right click}
-	\command{shift click}{shift click}
-	\command{squat}{left button down}
-	\command{bench}{left button up}
-	\command{lean}{right button down}
-	\command{hoist}{right button up}
-	\command{colic}{control left click}
-	\command{scree \footnotemark[1]}{scroll wheel}
-	\command{curse}{move cursor by pixels}
-	\command{douglas}{move cursor on grid}
-	\command{rainbow}{alternate grid}
-	\command{legion}{smart text selection}
 	
-	\footnotetext[1]{Takes optional direction parameter, one of the direction keys from table (5)}
+	\end{multicols}
 	
-	\sectiontitle{Window Management}
+	\footnotetext[1]{Takes optional number parameter for repetition}
 	
-	\command{minimise win}{minimise window}
-	\command{maximise win}{maximise window}
-	\command{switch window}{ctrl+alt+tab. Use tab|shin+tab, enter}
-	\command{show windows}{(Dragon) show list of windows}
-	\command{move window}{move with arrow keys}
-	\command{window (left|right)}{snap window to left|right}
-	\command{send monitor (left|right)}{send the current window to left/right monitor}
-	\command{show work}{show active workspaces}
-	\command{new work}{create a new workspace}
-	\command{close work}{close the current workspace}
-	\command{close all work}{close all workspaces}
-	\command{previous work \footnotemark[2]}{go to the previous workspace}
-	\command{next work \footnotemark[2]}{go to the next workspace}
-	\command{go work <n>}{go to workspace number n}
-	\command{send work <n>}{send the current window to workspace n}
-	\command{move work <n>}{move the current window to workspace n}
-	
-	\footnotetext[2]{Takes an optional number parameter for repetition}
-	
+
+
 
 	%----------------------------------------------------------------------------------------
 	\end{minipage}
@@ -493,6 +576,57 @@ Must pause after issuing command. This is not a CCR/merge command.
 
 \begin{picture}(297,210) % Create a container for the page content
 \put(10,200){ % Divide the page
+	
+\begin{minipage}[t]{85mm}
+%----------------------------------------------------------------------------------------
+
+
+\sectiontitle{Mouse Replacement}
+
+\command{kick}{left click}
+\command{kick mid}{middle click}
+\command{psychic}{right click}
+\command{shift right click}{shift right click}
+\command{shift click}{shift click}
+\command{squat}{left button down}
+\command{bench}{left button up}
+\command{lean}{right button down}
+\command{hoist}{right button up}
+\command{colic}{control left click}
+\command{scree \footnotemark[1]}{scroll wheel}
+\command{curse}{move cursor by pixels}
+\command{douglas}{move cursor on grid}
+\command{rainbow}{alternate grid}
+\command{legion}{smart text selection}
+
+\footnotetext[1]{Takes optional direction parameter, one of the direction keys from table (5)}
+
+\sectiontitle{Window Management}
+
+\command{minimise win}{minimise window}
+\command{maximise win}{maximise window}
+\command{switch window}{ctrl+alt+tab. Use tab|shin+tab, enter}
+\command{show windows}{(Dragon) show list of windows}
+\command{move window}{move with arrow keys}
+\command{window (left|right)}{snap window to left|right}
+\command{send monitor (left|right)}{send the current window to left/right monitor}
+\command{show work}{show active workspaces}
+\command{new work}{create a new workspace}
+\command{close work}{close the current workspace}
+\command{close all work}{close all workspaces}
+\command{previous work \footnotemark[2]}{go to the previous workspace}
+\command{next work \footnotemark[2]}{go to the next workspace}
+\command{go work <n>}{go to workspace number n}
+\command{send work <n>}{send the current window to workspace n}
+\command{move work <n>}{move the current window to workspace n}
+
+\footnotetext[2]{Takes an optional number parameter for repetition}
+
+
+%----------------------------------------------------------------------------------------
+\end{minipage}	
+	
+	
 \begin{minipage}[t]{85mm} % Create a box to house text
 
 %----------------------------------------------------------------------------------------
