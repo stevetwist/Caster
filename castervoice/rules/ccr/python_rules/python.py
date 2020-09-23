@@ -34,6 +34,7 @@ basicKeywordMap = {
     "pass" : "pass ",
     "raise" : "raise ",
     "return" : "return ",
+    "self" : "self",
     "true" : "True",    
     "to do" : "TODO: "
 }
